@@ -9,7 +9,7 @@ const NOVIA = "Liliana";
 const NOVIO = "Julián";
 
 // Coincide con la duración de la animación de apertura del sobre en Sobre.tsx
-const REVEAL_DELAY_MS = 1150;
+const REVEAL_DELAY_MS = 950;
 
 export function Portada() {
   const { start } = useAudio();
@@ -24,7 +24,7 @@ export function Portada() {
     <section className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 py-16 text-center">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,var(--color-blush-soft),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,var(--color-sky-soft),transparent_60%)]"
       />
 
       {!revealed && (

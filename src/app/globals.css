@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 /*
- * Paleta placeholder — marfil / blush / dorado suave, estilo invitación
- * premium. Pendiente de definir la paleta final con los novios (ver
- * CLAUDE.md §10). Al confirmarla, solo hay que editar estos valores.
+ * Paleta placeholder — marfil / azul claro / dorado suave, estilo
+ * invitación premium. Pendiente de definir la paleta final exacta con los
+ * novios (ver CLAUDE.md §10). Al confirmarla, solo hay que editar estos
+ * valores.
  */
 :root {
   --color-ivory: #faf3ea;
   --color-ivory-soft: #f3e9db;
-  --color-blush: #e3b8b4;
-  --color-blush-soft: #efd6d3;
+  --color-sky: #a7c4dc;
+  --color-sky-soft: #dde9f2;
   --color-gold: #b6904f;
   --color-gold-soft: #d9c39a;
   --color-ink: #2e2823;
@@ -19,8 +20,8 @@
 @theme inline {
   --color-ivory: var(--color-ivory);
   --color-ivory-soft: var(--color-ivory-soft);
-  --color-blush: var(--color-blush);
-  --color-blush-soft: var(--color-blush-soft);
+  --color-sky: var(--color-sky);
+  --color-sky-soft: var(--color-sky-soft);
   --color-gold: var(--color-gold);
   --color-gold-soft: var(--color-gold-soft);
   --color-ink: var(--color-ink);

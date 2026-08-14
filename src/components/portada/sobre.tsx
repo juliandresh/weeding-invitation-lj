@@ -20,17 +20,17 @@ export function Sobre({ onOpen }: { onOpen: () => void }) {
         disabled={isOpening}
         aria-label="Abrir invitación"
         className="group relative block h-[170px] w-[240px] outline-none sm:h-[190px] sm:w-[270px]"
-        style={{ perspective: "1400px" }}
+        style={{ touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
       >
         {/* cuerpo del sobre */}
         <motion.div
-          className="absolute inset-0 rounded-sm border border-gold/50 bg-gradient-to-b from-ivory-soft to-blush-soft shadow-[0_10px_30px_-12px_rgba(46,40,35,0.35)]"
+          className="absolute inset-0 rounded-sm border border-gold/50 bg-gradient-to-b from-ivory-soft to-sky-soft shadow-[0_10px_30px_-12px_rgba(46,40,35,0.35)]"
           animate={
             isOpening ? { y: -14, opacity: 0 } : { y: 0, opacity: 1, scale: [1, 1.015, 1] }
           }
           transition={
             isOpening
-              ? { delay: 0.55, duration: 0.5, ease: "easeInOut" }
+              ? { delay: 0.4, duration: 0.5, ease: "easeInOut" }
               : { duration: 3.2, repeat: Infinity, ease: "easeInOut" }
           }
         >
@@ -40,15 +40,18 @@ export function Sobre({ onOpen }: { onOpen: () => void }) {
           </div>
         </motion.div>
 
-        {/* solapa */}
+        {/* solapa: se usan solo transformaciones 2D (translate/scale) +
+            opacidad para máxima compatibilidad móvil — combinar clip-path
+            con rotateX/perspective falla en varios navegadores de celular */}
         <motion.div
-          className="absolute left-0 top-0 z-10 h-[52%] w-full origin-top bg-gradient-to-b from-blush to-blush-soft"
-          style={{
-            clipPath: "polygon(0 0, 100% 0, 50% 100%)",
-            transformStyle: "preserve-3d",
-          }}
-          animate={isOpening ? { rotateX: -175 } : { rotateX: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="absolute left-0 top-0 z-10 h-[52%] w-full origin-top bg-gradient-to-b from-sky to-sky-soft"
+          style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}
+          animate={
+            isOpening
+              ? { y: -40, opacity: 0, scale: 0.9 }
+              : { y: 0, opacity: 1, scale: 1 }
+          }
+          transition={{ duration: 0.5, ease: "easeInOut" }}
         />
       </button>
 
