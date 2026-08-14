@@ -1,26 +1,36 @@
 @import "tailwindcss";
 
+/*
+ * Paleta placeholder — marfil / blush / dorado suave, estilo invitación
+ * premium. Pendiente de definir la paleta final con los novios (ver
+ * CLAUDE.md §10). Al confirmarla, solo hay que editar estos valores.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-ivory: #faf3ea;
+  --color-ivory-soft: #f3e9db;
+  --color-blush: #e3b8b4;
+  --color-blush-soft: #efd6d3;
+  --color-gold: #b6904f;
+  --color-gold-soft: #d9c39a;
+  --color-ink: #2e2823;
+  --color-ink-soft: #6b5f54;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-ivory: var(--color-ivory);
+  --color-ivory-soft: var(--color-ivory-soft);
+  --color-blush: var(--color-blush);
+  --color-blush-soft: var(--color-blush-soft);
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --font-script: var(--font-script);
+  --font-serif: var(--font-serif);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-serif), serif;
 }
