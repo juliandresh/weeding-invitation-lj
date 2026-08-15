@@ -44,7 +44,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# assets originales sin procesar (fotos/audio en bruto antes de optimizar
-# e incorporar a public/) — no se versionan, solo la copia final usada
+# assets originales sin procesar (fotos/audio/imágenes en bruto antes de
+# optimizar e incorporar a public/) — no se versionan, solo la copia final
 /music/
 /fotos-originales/
+/assets-originales/

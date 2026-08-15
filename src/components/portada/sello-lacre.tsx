@@ -1,15 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
-const BASE = "#8a6a2f";
-const HIGHLIGHT = "#e0c072";
-const SHADOW = "#5e4720";
-
 /**
- * Sello de lacre — cera con borde ondulado y un emblema de dos anillos de
- * matrimonio entrelazados grabado en el centro, en un único tono
- * dorado/bronce. 100% SVG original, sin assets externos.
+ * Sello de lacre — imagen generada con IA (anillos de matrimonio
+ * entrelazados, grabados en cera dorada/bronce), recortada en círculo
+ * para integrarse sobre el sobre sin mostrar el fondo original.
+ * Asset en bruto: assets-originales/Sello_lacre_con_dos_anillos.png
+ * Copia optimizada: public/images/sello-lacre.png
  */
 export function SelloLacre({ cracked = false }: { cracked?: boolean }) {
   return (
@@ -36,76 +35,14 @@ export function SelloLacre({ cracked = false }: { cracked?: boolean }) {
             }
       }
     >
-      <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
-        <defs>
-          <radialGradient id="lacre-fondo" cx="35%" cy="30%" r="75%">
-            <stop offset="0%" stopColor={HIGHLIGHT} />
-            <stop offset="60%" stopColor={BASE} />
-            <stop offset="100%" stopColor={SHADOW} />
-          </radialGradient>
-        </defs>
-
-        {/* borde ondulado, tipo cera derramada */}
-        <path
-          d="M30 3
-             C36 2 40 6 44 5
-             C50 4 55 10 54 16
-             C58 20 58 27 55 31
-             C58 36 56 43 51 45
-             C52 51 46 56 40 54
-             C36 58 29 58 25 54
-             C19 56 13 51 14 45
-             C9 43 7 36 10 31
-             C6 27 6 20 10 16
-             C9 10 14 4 20 5
-             C24 6 27 2 30 3 Z"
-          fill="url(#lacre-fondo)"
-          stroke={SHADOW}
-          strokeWidth="0.5"
-        />
-
-        {/* anillo izquierdo (atrás) */}
-        <circle
-          cx="25"
-          cy="31"
-          r="9"
-          fill="none"
-          stroke={SHADOW}
-          strokeWidth="3"
-          opacity="0.85"
-        />
-        <circle
-          cx="25"
-          cy="31"
-          r="9"
-          fill="none"
-          stroke={HIGHLIGHT}
-          strokeWidth="1"
-          opacity="0.55"
-          transform="translate(-0.7 -0.7)"
-        />
-
-        {/* anillo derecho (adelante, entrelazado con el izquierdo) */}
-        <circle
-          cx="35"
-          cy="29"
-          r="9"
-          fill="none"
-          stroke={SHADOW}
-          strokeWidth="3"
-          opacity="0.85"
-        />
-        <circle
-          cx="35"
-          cy="29"
-          r="9"
-          fill="none"
-          stroke={HIGHLIGHT}
-          strokeWidth="1"
-          opacity="0.55"
-          transform="translate(-0.7 -0.7)"
-        />
-      </svg>
+      <Image
+        src="/images/sello-lacre.png"
+        alt=""
+        width={480}
+        height={480}
+        className="h-16 w-16 shadow-[0_4px_10px_-3px_rgba(46,40,35,0.5)] sm:h-[68px] sm:w-[68px]"
+        style={{ clipPath: "circle(47% at 50% 50%)" }}
+      />
     </motion.div>
   );
 }
