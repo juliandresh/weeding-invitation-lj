@@ -7,8 +7,8 @@ const HIGHLIGHT = "#e0c072";
 const SHADOW = "#5e4720";
 
 /**
- * Sello de lacre — cera con borde ondulado y textura de dos anillos
- * concéntricos grabados (efecto cuerda/relieve), en un único tono
+ * Sello de lacre — cera con borde ondulado y un emblema de dos anillos de
+ * matrimonio entrelazados grabado en el centro, en un único tono
  * dorado/bronce. 100% SVG original, sin assets externos.
  */
 export function SelloLacre({ cracked = false }: { cracked?: boolean }) {
@@ -64,50 +64,47 @@ export function SelloLacre({ cracked = false }: { cracked?: boolean }) {
           strokeWidth="0.5"
         />
 
-        {/* anillo exterior grabado */}
+        {/* anillo izquierdo (atrás) */}
         <circle
-          cx="30"
-          cy="30"
-          r="19"
+          cx="25"
+          cy="31"
+          r="9"
           fill="none"
           stroke={SHADOW}
-          strokeWidth="1.4"
+          strokeWidth="3"
+          opacity="0.85"
+        />
+        <circle
+          cx="25"
+          cy="31"
+          r="9"
+          fill="none"
+          stroke={HIGHLIGHT}
+          strokeWidth="1"
           opacity="0.55"
-        />
-        <circle
-          cx="30"
-          cy="30"
-          r="19"
-          fill="none"
-          stroke={HIGHLIGHT}
-          strokeWidth="0.6"
-          opacity="0.5"
-          transform="translate(-0.6 -0.6)"
+          transform="translate(-0.7 -0.7)"
         />
 
-        {/* anillo interior grabado */}
+        {/* anillo derecho (adelante, entrelazado con el izquierdo) */}
         <circle
-          cx="30"
-          cy="30"
-          r="12"
+          cx="35"
+          cy="29"
+          r="9"
           fill="none"
           stroke={SHADOW}
-          strokeWidth="1.2"
-          opacity="0.5"
+          strokeWidth="3"
+          opacity="0.85"
         />
         <circle
-          cx="30"
-          cy="30"
-          r="12"
+          cx="35"
+          cy="29"
+          r="9"
           fill="none"
           stroke={HIGHLIGHT}
-          strokeWidth="0.6"
-          opacity="0.45"
-          transform="translate(-0.5 -0.5)"
+          strokeWidth="1"
+          opacity="0.55"
+          transform="translate(-0.7 -0.7)"
         />
-
-        {/* centro */}
-        <circle cx="30" cy="30" r="3" fill={HIGHLIGHT} opacity="0.55" />
       </svg>
     </motion.div>
   );
