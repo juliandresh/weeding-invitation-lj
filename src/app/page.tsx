@@ -5,6 +5,7 @@ import { Itinerario } from "@/components/itinerario/itinerario";
 import { CeremoniaRecepcion } from "@/components/ceremonia/ceremonia-recepcion";
 import { Galeria } from "@/components/galeria/galeria";
 import { Frase } from "@/components/frase/frase";
+import { DressCode } from "@/components/dress-code/dress-code";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <CeremoniaRecepcion />
       <Galeria />
       <Frase />
+      <DressCode />
     </main>
   );
 }
