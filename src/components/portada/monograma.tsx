@@ -1,10 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 /**
- * Insignia circular con el monograma de los novios, doble anillo dorado
- * fino como marco. 100% SVG/CSS original.
+ * Monograma de los novios — imagen generada con IA (guirnalda floral con
+ * las iniciales "L & J" entrelazadas), fondo blanco original removido por
+ * des-mezclado de color para evitar halos.
+ * Asset en bruto: assets-originales/monograma.png
+ * Copia optimizada: public/images/monograma.png
  */
 export function Monograma() {
   return (
@@ -12,13 +16,15 @@ export function Monograma() {
       initial={{ opacity: 0, scale: 0.85 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-b from-ivory-soft to-sky-soft shadow-[0_6px_20px_-8px_rgba(46,40,35,0.35)] sm:h-28 sm:w-28"
     >
-      <span className="absolute inset-0 rounded-full border border-gold" />
-      <span className="absolute inset-[5px] rounded-full border border-gold/60" />
-      <span className="font-script text-3xl text-gold sm:text-4xl">
-        L&nbsp;&amp;&nbsp;J
-      </span>
+      <Image
+        src="/images/monograma.png"
+        alt="Monograma L & J"
+        width={541}
+        height={600}
+        priority
+        className="h-32 w-auto drop-shadow-[0_6px_14px_rgba(46,40,35,0.25)] sm:h-40"
+      />
     </motion.div>
   );
 }
