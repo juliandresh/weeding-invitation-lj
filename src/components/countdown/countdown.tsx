@@ -3,10 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Divider } from "@/components/ui/divider";
-
-// Fecha placeholder — reemplazar cuando se confirme la fecha real del
-// evento (ver CLAUDE.md §10). Formato local, sin zona horaria explícita.
-const FECHA_BODA = new Date("2026-12-12T18:00:00");
+import { FECHA_BODA } from "@/lib/site-config";
 
 type TiempoRestante = {
   dias: number;
