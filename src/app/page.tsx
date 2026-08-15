@@ -8,6 +8,8 @@ import { Frase } from "@/components/frase/frase";
 import { DressCode } from "@/components/dress-code/dress-code";
 import { CompartirFotos } from "@/components/compartir-fotos/compartir-fotos";
 import { Sugerencias } from "@/components/sugerencias/sugerencias";
+import { Notas } from "@/components/notas/notas";
+import { Regalos } from "@/components/regalos/regalos";
 
 export default function Home() {
   return (
@@ -22,6 +24,8 @@ export default function Home() {
       <DressCode />
       <CompartirFotos />
       <Sugerencias />
+      <Notas />
+      <Regalos />
     </main>
   );
 }

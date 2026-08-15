@@ -90,8 +90,16 @@ indispensable, ya que los invitados son familiares/amigos y el subdominio
     terceros contratado aparte) para que los invitados suban sus fotos del día del
     evento
 10. **Sugerencias** — hoteles y sitios turísticos cercanos
-11. **Confirmación de asistencia (RSVP)** — formulario conectado a Supabase, con captcha
-12. **Footer** — créditos discretos
+11. **Notas** — avisos importantes para los invitados (ej. celebración solo para
+    adultos, recomendación de elegir conductor designado con anticipación)
+12. **Regalos** — mensaje sobre lluvia de sobres, sin datos bancarios expuestos
+13. **Confirmación de asistencia (RSVP)** — formulario conectado a Supabase, con
+    captcha; fecha límite de confirmación editable desde `configuracion_sitio`.
+    El envío debe hacerse sin abandonar el sitio (panel/modal en la misma
+    página, sin redirigir a un formulario externo). Incluir un aviso sutil de
+    que la invitación es personal/intransferible y solo incluye a las
+    personas detalladas en ella (sin acompañantes adicionales no listados)
+14. **Footer** — créditos discretos
 
 ---
 

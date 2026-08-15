@@ -20,3 +20,14 @@ export const ALBUM_QR = {
   esDummy: true,
   url: "Álbum digital próximamente — QR de ejemplo",
 };
+
+// Fecha límite para confirmar asistencia (RSVP) — lunes 2 de noviembre de
+// 2026. Usar para mostrar el aviso en la sección de confirmación y, más
+// adelante, para bloquear el formulario después de esta fecha.
+export const RSVP_FECHA_LIMITE = new Date("2026-11-02T23:59:59");
+
+// Aviso sutil de exclusividad — la invitación solo incluye a las personas
+// detalladas en ella (según cupos del invitado), sin acompañantes
+// adicionales no listados. Se usa en la sección de RSVP.
+export const RSVP_NOTA_EXCLUSIVIDAD =
+  "Esta invitación es personal e intransferible, e incluye únicamente a las personas aquí detalladas.";
