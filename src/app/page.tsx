@@ -1,6 +1,7 @@
 import { Portada } from "@/components/portada/portada";
 import { Historia } from "@/components/historia/historia";
 import { Countdown } from "@/components/countdown/countdown";
+import { Itinerario } from "@/components/itinerario/itinerario";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Portada />
       <Historia />
       <Countdown />
+      <Itinerario />
     </main>
   );
 }
