@@ -4,6 +4,7 @@ import { Countdown } from "@/components/countdown/countdown";
 import { Itinerario } from "@/components/itinerario/itinerario";
 import { CeremoniaRecepcion } from "@/components/ceremonia/ceremonia-recepcion";
 import { Galeria } from "@/components/galeria/galeria";
+import { Frase } from "@/components/frase/frase";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Itinerario />
       <CeremoniaRecepcion />
       <Galeria />
+      <Frase />
     </main>
   );
 }
