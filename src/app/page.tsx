@@ -7,6 +7,7 @@ import { Galeria } from "@/components/galeria/galeria";
 import { Frase } from "@/components/frase/frase";
 import { DressCode } from "@/components/dress-code/dress-code";
 import { CompartirFotos } from "@/components/compartir-fotos/compartir-fotos";
+import { Sugerencias } from "@/components/sugerencias/sugerencias";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Frase />
       <DressCode />
       <CompartirFotos />
+      <Sugerencias />
     </main>
   );
 }
