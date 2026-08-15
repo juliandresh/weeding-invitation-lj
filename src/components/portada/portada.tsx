@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAudio } from "@/components/audio/audio-context";
 import { TarjetaInvitado } from "@/components/invitado/tarjeta-invitado";
 import { INVITADO_EJEMPLO } from "@/lib/mock-invitado";
@@ -22,8 +22,27 @@ export function Portada() {
     window.setTimeout(() => setRevealed(true), REVEAL_DELAY_MS);
   }
 
+  // Bloquea el scroll de la página mientras el sobre no se haya abierto:
+  // la pantalla inicial debe verse sola, sin poder desplazarse a las
+  // siguientes secciones hasta hacer clic.
+  useEffect(() => {
+    if (revealed) {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      return;
+    }
+
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    };
+  }, [revealed]);
+
   return (
-    <section className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 py-16 text-center">
+    <section className="relative flex h-dvh flex-col items-center justify-center overflow-y-auto px-6 py-16 text-center">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,var(--color-sky-soft),transparent_60%)]"
