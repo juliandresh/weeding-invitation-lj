@@ -2,6 +2,7 @@ import { Portada } from "@/components/portada/portada";
 import { Historia } from "@/components/historia/historia";
 import { Countdown } from "@/components/countdown/countdown";
 import { Itinerario } from "@/components/itinerario/itinerario";
+import { CeremoniaRecepcion } from "@/components/ceremonia/ceremonia-recepcion";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Historia />
       <Countdown />
       <Itinerario />
+      <CeremoniaRecepcion />
     </main>
   );
 }
