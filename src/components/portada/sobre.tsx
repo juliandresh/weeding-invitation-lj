@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { SelloLacre } from "./sello-lacre";
 
 export function Sobre({ onOpen }: { onOpen: () => void }) {
   const [isOpening, setIsOpening] = useState(false);
@@ -35,9 +36,6 @@ export function Sobre({ onOpen }: { onOpen: () => void }) {
           }
         >
           <div className="absolute inset-2 border border-gold/25" />
-          <div className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-gold bg-ivory font-script text-lg text-gold shadow-sm">
-            L&amp;J
-          </div>
         </motion.div>
 
         {/* solapa: se usan solo transformaciones 2D (translate/scale) +
@@ -53,6 +51,8 @@ export function Sobre({ onOpen }: { onOpen: () => void }) {
           }
           transition={{ duration: 0.5, ease: "easeInOut" }}
         />
+
+        <SelloLacre cracked={isOpening} />
       </button>
 
       <motion.p

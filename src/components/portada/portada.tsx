@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useAudio } from "@/components/audio/audio-context";
+import { Monograma } from "./monograma";
 import { Sobre } from "./sobre";
 
 const NOVIA = "Liliana";
@@ -28,7 +29,8 @@ export function Portada() {
       />
 
       {!revealed && (
-        <div className="relative z-10">
+        <div className="relative z-10 flex flex-col items-center gap-8">
+          <Monograma />
           <Sobre onOpen={handleOpen} />
         </div>
       )}
