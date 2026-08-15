@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { QRCodeSVG } from "qrcode.react";
 import { Divider } from "@/components/ui/divider";
+import { Reveal } from "@/components/ui/reveal";
 import { ALBUM_QR } from "@/lib/site-config";
 
 export function CompartirFotos() {
@@ -10,11 +10,8 @@ export function CompartirFotos() {
 
   return (
     <section className="relative bg-ivory-soft px-6 py-20 sm:py-28">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+      <Reveal
+        amount={0.4}
         className="mx-auto flex max-w-md flex-col items-center gap-6 text-center"
       >
         <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
@@ -43,7 +40,7 @@ export function CompartirFotos() {
             </p>
           )}
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

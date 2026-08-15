@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Divider } from "@/components/ui/divider";
+import { Reveal } from "@/components/ui/reveal";
 
 function IconoCopa() {
   return (
@@ -23,11 +23,8 @@ function IconoCopa() {
 export function Notas() {
   return (
     <section className="relative bg-ivory px-6 py-20 sm:py-28">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+      <Reveal
+        amount={0.4}
         className="mx-auto flex max-w-lg flex-col items-center gap-5 text-center"
       >
         <div className="text-gold">
@@ -36,11 +33,14 @@ export function Notas() {
         <h2 className="font-script text-5xl text-ink sm:text-6xl">Notas</h2>
         <Divider />
         <p className="text-lg text-ink-soft">
-          Con cariño, hemos pensado esta celebración para adultos, para que
-          puedan disfrutar con total tranquilidad. Los invitamos a elegir con
-          anticipación a su conductor designado.
+          Adoramos a los más pequeños de la familia, pero en esta ocasión
+          queremos que todos puedan disfrutar de una noche tranquila entre
+          adultos. Por eso, esta celebración está pensada solo para grandes.
         </p>
-      </motion.div>
+        <p className="text-lg text-ink-soft">
+          Los invitamos a elegir con anticipación a su conductor designado.
+        </p>
+      </Reveal>
     </section>
   );
 }

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { Divider } from "@/components/ui/divider";
+import { Reveal } from "@/components/ui/reveal";
 import { FECHA_BODA } from "@/lib/site-config";
 
 type TiempoRestante = {
@@ -52,12 +52,9 @@ export function Countdown() {
   });
 
   return (
-    <section className="relative bg-sky-soft/40 px-6 py-20 sm:py-28">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+    <section className="relative bg-gradient-to-b from-ivory via-sky-soft/50 to-ivory px-6 py-20 sm:py-28">
+      <Reveal
+        amount={0.4}
         className="mx-auto flex max-w-xl flex-col items-center gap-6 text-center"
       >
         <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
@@ -83,7 +80,7 @@ export function Countdown() {
             </div>
           ))}
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

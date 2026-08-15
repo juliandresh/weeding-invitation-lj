@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Divider } from "@/components/ui/divider";
+import { Reveal } from "@/components/ui/reveal";
 
 // Fotos temporales (dummy) mientras llega la sesión profesional — ver
 // CLAUDE.md §10. Reemplazar los archivos en public/images/galeria/ cuando
@@ -76,11 +77,8 @@ export function Galeria() {
 
   return (
     <section className="relative bg-ivory-soft px-6 py-20 sm:py-28">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+      <Reveal
+        amount={0.2}
         className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center"
       >
         <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
@@ -134,7 +132,7 @@ export function Galeria() {
             <IconoFlecha direccion="derecha" />
           </button>
         </div>
-      </motion.div>
+      </Reveal>
 
       <AnimatePresence>
         {activa !== null && (
@@ -149,7 +147,7 @@ export function Galeria() {
               type="button"
               onClick={cerrar}
               aria-label="Cerrar"
-              className="absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full border border-ivory/40 text-ivory"
+              className="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-ivory/40 bg-ink/60 text-ivory backdrop-blur-sm transition hover:bg-ink/80"
             >
               <IconoCerrar />
             </button>
@@ -161,7 +159,7 @@ export function Galeria() {
                 anterior();
               }}
               aria-label="Foto anterior"
-              className="absolute top-1/2 left-2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/40 text-ivory sm:left-6"
+              className="absolute top-1/2 left-2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/40 bg-ink/60 text-ivory backdrop-blur-sm transition hover:bg-ink/80 sm:left-6"
             >
               <IconoFlecha direccion="izquierda" />
             </button>
@@ -172,7 +170,7 @@ export function Galeria() {
                 siguiente();
               }}
               aria-label="Foto siguiente"
-              className="absolute top-1/2 right-2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/40 text-ivory sm:right-6"
+              className="absolute top-1/2 right-2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-ivory/40 bg-ink/60 text-ivory backdrop-blur-sm transition hover:bg-ink/80 sm:right-6"
             >
               <IconoFlecha direccion="derecha" />
             </button>
@@ -183,7 +181,7 @@ export function Galeria() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.25 }}
-              className="relative h-full max-h-[80vh] w-full max-w-3xl"
+              className="relative z-10 h-full max-h-[80vh] w-full max-w-3xl"
               onClick={(e) => e.stopPropagation()}
             >
               <Image

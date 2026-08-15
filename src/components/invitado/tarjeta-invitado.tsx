@@ -33,7 +33,7 @@ export function TarjetaInvitado({ invitado }: { invitado: InvitadoInfo }) {
         {invitado.titulo} {invitado.nombre}
       </h2>
       <p className="font-serif text-sm uppercase tracking-[0.2em] text-ink-soft">
-        Mesa {invitado.mesa} · {invitado.cupos} {etiquetaCupos}
+        {invitado.cupos} {etiquetaCupos}
       </p>
       {invitado.acompanantes.length > 0 && (
         <p className="max-w-xs text-sm text-ink-soft">
