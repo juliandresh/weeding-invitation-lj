@@ -10,22 +10,26 @@ import { CompartirFotos } from "@/components/compartir-fotos/compartir-fotos";
 import { Sugerencias } from "@/components/sugerencias/sugerencias";
 import { Notas } from "@/components/notas/notas";
 import { Regalos } from "@/components/regalos/regalos";
+import { Footer } from "@/components/footer/footer";
 
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col">
-      <Portada />
-      <Historia />
-      <Countdown />
-      <Itinerario />
-      <CeremoniaRecepcion />
-      <Galeria />
-      <Frase />
-      <DressCode />
-      <CompartirFotos />
-      <Sugerencias />
-      <Notas />
-      <Regalos />
-    </main>
+    <>
+      <main className="flex flex-1 flex-col">
+        <Portada />
+        <Historia />
+        <Countdown />
+        <Itinerario />
+        <CeremoniaRecepcion />
+        <Galeria />
+        <Frase />
+        <DressCode />
+        <CompartirFotos />
+        <Sugerencias />
+        <Notas />
+        <Regalos />
+      </main>
+      <Footer />
+    </>
   );
 }
