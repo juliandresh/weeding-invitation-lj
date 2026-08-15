@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Divider } from "@/components/ui/divider";
@@ -43,6 +43,7 @@ function IconoFlecha({ direccion }: { direccion: "izquierda" | "derecha" }) {
 }
 
 export function Galeria() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
   const [activa, setActiva] = useState<number | null>(null);
 
   const cerrar = useCallback(() => setActiva(null), []);
@@ -54,6 +55,13 @@ export function Galeria() {
     () => setActiva((i) => (i === null ? null : (i + 1) % FOTOS.length)),
     []
   );
+
+  const desplazar = useCallback((direccion: "izquierda" | "derecha") => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const delta = el.clientWidth * 0.8 * (direccion === "izquierda" ? -1 : 1);
+    el.scrollBy({ left: delta, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
     if (activa === null) return;
@@ -80,25 +88,51 @@ export function Galeria() {
         </p>
         <h2 className="font-script text-5xl text-ink sm:text-6xl">Galería</h2>
         <Divider />
+        <p className="text-xs text-ink-soft">
+          Desliza o usa las flechas para ver más fotos
+        </p>
 
-        <div className="mt-4 grid w-full grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
-          {FOTOS.map((foto, i) => (
-            <button
-              key={foto.src}
-              type="button"
-              onClick={() => setActiva(i)}
-              className="group relative aspect-square overflow-hidden rounded-md"
-              aria-label={`Ver ${foto.alt} en grande`}
-            >
-              <Image
-                src={foto.src}
-                alt={foto.alt}
-                fill
-                sizes="(max-width: 640px) 50vw, 33vw"
-                className="object-cover transition duration-300 group-hover:scale-105"
-              />
-            </button>
-          ))}
+        <div className="relative mt-2 w-full">
+          <button
+            type="button"
+            onClick={() => desplazar("izquierda")}
+            aria-label="Ver fotos anteriores"
+            className="absolute top-1/2 left-0 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gold/40 bg-ivory/90 text-gold shadow-sm transition hover:bg-ivory sm:flex"
+          >
+            <IconoFlecha direccion="izquierda" />
+          </button>
+
+          <div
+            ref={scrollerRef}
+            className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-1 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {FOTOS.map((foto, i) => (
+              <button
+                key={foto.src}
+                type="button"
+                onClick={() => setActiva(i)}
+                className="relative aspect-[3/4] w-56 shrink-0 snap-center overflow-hidden rounded-md sm:w-64"
+                aria-label={`Ver ${foto.alt} en grande`}
+              >
+                <Image
+                  src={foto.src}
+                  alt={foto.alt}
+                  fill
+                  sizes="(max-width: 640px) 60vw, 256px"
+                  className="object-cover"
+                />
+              </button>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => desplazar("derecha")}
+            aria-label="Ver fotos siguientes"
+            className="absolute top-1/2 right-0 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gold/40 bg-ivory/90 text-gold shadow-sm transition hover:bg-ivory sm:flex"
+          >
+            <IconoFlecha direccion="derecha" />
+          </button>
         </div>
       </motion.div>
 

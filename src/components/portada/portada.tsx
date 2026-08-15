@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useAudio } from "@/components/audio/audio-context";
-import { Monograma } from "./monograma";
+import { TarjetaInvitado } from "@/components/invitado/tarjeta-invitado";
+import { INVITADO_EJEMPLO } from "@/lib/mock-invitado";
 import { Sobre } from "./sobre";
 
 const NOVIA = "Liliana";
@@ -29,8 +30,12 @@ export function Portada() {
       />
 
       {!revealed && (
-        <div className="relative z-10 flex flex-col items-center gap-8">
-          <Monograma />
+        <div className="relative z-10 flex flex-col items-center gap-6">
+          <TarjetaInvitado invitado={INVITADO_EJEMPLO} />
+          <p className="max-w-md text-lg text-ink-soft">
+            Sabemos que este día no sería igual sin ti. Toca el sobre para
+            descubrir los detalles de nuestra celebración.
+          </p>
           <Sobre onOpen={handleOpen} />
         </div>
       )}
