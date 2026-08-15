@@ -6,6 +6,7 @@ import { CeremoniaRecepcion } from "@/components/ceremonia/ceremonia-recepcion";
 import { Galeria } from "@/components/galeria/galeria";
 import { Frase } from "@/components/frase/frase";
 import { DressCode } from "@/components/dress-code/dress-code";
+import { CompartirFotos } from "@/components/compartir-fotos/compartir-fotos";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Galeria />
       <Frase />
       <DressCode />
+      <CompartirFotos />
     </main>
   );
 }
