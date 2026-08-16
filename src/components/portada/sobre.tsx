@@ -10,6 +10,9 @@ export function Sobre({ onOpen }: { onOpen: () => void }) {
   function handleClick() {
     if (isOpening) return;
     setIsOpening(true);
+    if (typeof navigator !== "undefined" && "vibrate" in navigator) {
+      navigator.vibrate(18);
+    }
     onOpen();
   }
 

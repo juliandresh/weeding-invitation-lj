@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Divider } from "@/components/ui/divider";
 import { Reveal } from "@/components/ui/reveal";
@@ -29,6 +30,27 @@ const UNIDADES: { key: keyof TiempoRestante; label: string }[] = [
   { key: "minutos", label: "Minutos" },
   { key: "segundos", label: "Segundos" },
 ];
+
+// Cada dígito se anima con un pequeño deslizamiento vertical al cambiar de
+// valor, tipo "odómetro", en vez de reemplazarse de golpe.
+function DigitoAnimado({ valor }: { valor: string }) {
+  return (
+    <span className="relative inline-block h-[1em] w-[0.62em] overflow-hidden align-top">
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.span
+          key={valor}
+          className="absolute inset-0 flex items-center justify-center"
+          initial={{ y: "60%", opacity: 0 }}
+          animate={{ y: "0%", opacity: 1 }}
+          exit={{ y: "-60%", opacity: 0 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+        >
+          {valor}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
 
 export function Countdown() {
   // Se calcula null durante el render del servidor y se llena en el
@@ -71,8 +93,12 @@ export function Countdown() {
               key={key}
               className="flex flex-col items-center gap-1 rounded-lg border border-gold/30 bg-ivory px-2 py-4 sm:px-4 sm:py-6"
             >
-              <span className="text-3xl tabular-nums text-ink sm:text-4xl">
-                {tiempo ? String(tiempo[key]).padStart(2, "0") : "--"}
+              <span className="flex text-3xl tabular-nums text-ink sm:text-4xl">
+                {(tiempo ? String(tiempo[key]).padStart(2, "0") : "--")
+                  .split("")
+                  .map((digito, i) => (
+                    <DigitoAnimado key={i} valor={digito} />
+                  ))}
               </span>
               <span className="text-[10px] uppercase tracking-[0.15em] text-ink-soft sm:text-xs">
                 {label}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Great_Vibes, Cormorant_Garamond } from "next/font/google";
 import { AudioProvider } from "@/components/audio/audio-context";
 import { MusicToggle } from "@/components/audio/music-toggle";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 import "./globals.css";
 
 const greatVibes = Great_Vibes({
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${greatVibes.variable} ${cormorant.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-ivory text-ink">
+        <ScrollProgress />
         <AudioProvider src="/audio/miranda-perfecta.mp3">
           {children}
           <MusicToggle />

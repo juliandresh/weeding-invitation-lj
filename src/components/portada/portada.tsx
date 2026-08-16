@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { useAudio } from "@/components/audio/audio-context";
 import { TarjetaInvitado } from "@/components/invitado/tarjeta-invitado";
 import { INVITADO_EJEMPLO } from "@/lib/mock-invitado";
@@ -16,6 +16,16 @@ const REVEAL_DELAY_MS = 950;
 export function Portada() {
   const { start } = useAudio();
   const [revealed, setRevealed] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Parallax suave: el degradado de fondo se desplaza levemente según el
+  // scroll dentro de la sección (basado en scroll, no en giroscopio, para
+  // que se comporte igual en todos los dispositivos).
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const glowY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
 
   function handleOpen() {
     start();
@@ -42,9 +52,13 @@ export function Portada() {
   }, [revealed]);
 
   return (
-    <section className="relative flex h-dvh flex-col items-center justify-center overflow-y-auto px-6 py-16 text-center">
-      <div
+    <section
+      ref={sectionRef}
+      className="relative flex h-dvh flex-col items-center justify-center overflow-y-auto px-6 py-16 text-center"
+    >
+      <motion.div
         aria-hidden
+        style={{ y: glowY }}
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,var(--color-sky-soft),transparent_60%)]"
       />
 

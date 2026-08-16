@@ -40,12 +40,24 @@ function IconoPin() {
       strokeWidth={1.6}
       aria-hidden="true"
     >
-      <path
+      <motion.path
         d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12Z"
         strokeLinecap="round"
         strokeLinejoin="round"
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.9, ease: "easeInOut" }}
       />
-      <circle cx="12" cy="9" r="2.3" />
+      <motion.circle
+        cx="12"
+        cy="9"
+        r="2.3"
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.9 }}
+      />
     </svg>
   );
 }

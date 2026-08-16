@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FECHA_BODA } from "@/lib/site-config";
+import { VideoCierre } from "./video-cierre";
 
 export function Footer() {
   const fecha = FECHA_BODA.toLocaleDateString("es-ES", {
@@ -18,6 +19,8 @@ export function Footer() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="border-t border-gold/20 bg-ink px-6 py-14 text-center"
     >
+      <VideoCierre />
+
       <p className="font-script text-4xl text-gold">Liliana &amp; Julián</p>
       <p className="mt-2 text-xs tracking-[0.3em] text-ivory-soft/70 uppercase">
         {fecha}

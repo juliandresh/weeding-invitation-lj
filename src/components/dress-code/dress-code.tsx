@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Divider } from "@/components/ui/divider";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -20,12 +21,16 @@ const COLORES_CABALLEROS = [
 function IconoVestido() {
   return (
     <svg viewBox="0 0 100 160" className="h-24 w-auto sm:h-28" aria-hidden="true">
-      <path
+      <motion.path
         d="M50 8 C42 8 36 14 36 22 C36 30 40 36 44 40 C30 55 22 90 14 150 L86 150 C78 90 70 55 56 40 C60 36 64 30 64 22 C64 14 58 8 50 8 Z"
         fill="none"
         stroke="currentColor"
         strokeWidth={1.6}
         strokeLinejoin="round"
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 1.4, ease: "easeInOut" }}
       />
     </svg>
   );
@@ -34,20 +39,28 @@ function IconoVestido() {
 function IconoTraje() {
   return (
     <svg viewBox="0 0 100 160" className="h-24 w-auto sm:h-28" aria-hidden="true">
-      <path
+      <motion.path
         d="M15 25 L38 8 L50 22 L62 8 L85 25 L85 150 L15 150 Z"
         fill="none"
         stroke="currentColor"
         strokeWidth={1.6}
         strokeLinejoin="round"
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 1.4, ease: "easeInOut" }}
       />
-      <path
+      <motion.path
         d="M46 22 L54 22 L58 45 L50 130 L42 45 Z"
         fill="currentColor"
         opacity={0.15}
         stroke="currentColor"
         strokeWidth={1.2}
         strokeLinejoin="round"
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.7, ease: "easeInOut", delay: 1.2 }}
       />
     </svg>
   );
