@@ -29,6 +29,18 @@ export function Footer() {
         Con todo nuestro cariño, gracias por celebrar este día junto a
         nosotros.
       </p>
+
+      <p className="mt-8 text-[10px] tracking-wide text-ivory-soft/35">
+        Ilustración floral de{" "}
+        <a
+          href="https://www.vecteezy.com/-/49105002-branch-of-flowering-tree-with-white-flowers-and-green-leaves-on-transparent-background-ai-generative"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2 hover:text-ivory-soft/60"
+        >
+          Mujhaid Wakeel en Vecteezy
+        </a>
+      </p>
     </motion.footer>
   );
 }

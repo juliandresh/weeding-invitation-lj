@@ -105,18 +105,43 @@ indispensable, ya que los invitados son familiares/amigos y el subdominio
 
 ## 5. Modelo de datos (Supabase / Postgres)
 
+Listado real: ~120-130 invitados agrupados en ~62-65 invitaciones. Cada persona del
+listado viene marcada con un rol dentro de su invitación: "P" (principal) o "S"
+(secundario/acompañante). **Una invitación puede tener más de un principal** (ej. una
+pareja invitada junto con sus hijos como acompañantes) — por eso el modelo usa una
+tabla `personas` con un campo `rol`, en vez de forzar un único principal fijo por
+invitación.
+
 ```
-tabla: invitados
+tabla: invitaciones
 - id (uuid, PK, generado automáticamente)
 - token_unico (uuid, único, usado en el link individual — NO IDs secuenciales)
-- titulo (text) -- "Sr.", "Sra.", "Srta.", etc.
-- nombre (text)
+- telefono (text, nullable) -- contacto de la invitación
 - mesa (int, nullable)
-- cupos (int)
-- confirmado (boolean, default null) -- null = pendiente, true/false = respondió
-- cupos_confirmados (int, nullable)
+- cupos (int) -- total de personas de esta invitación (principales + acompañantes)
+- confirmado (boolean, default null) -- DERIVADO de personas.asistira (true si al
+  menos una persona de la invitación asistirá) — no se edita directamente
+- cupos_confirmados (int, nullable) -- DERIVADO: cuenta de personas.asistira = true
 - fecha_confirmacion (timestamp, nullable)
-- notas (text, nullable) -- restricciones alimentarias, etc.
+- notas (text, nullable) -- restricciones alimentarias u otras notas de la invitación completa
+- mensaje_personalizado (text, nullable) -- reemplaza el texto genérico de bienvenida en
+  la Portada cuando tiene contenido (ver sección 4.1); si está vacío, se usa el texto
+  genérico ("Sabemos que este día no sería igual sin ti."). Editable desde el panel admin.
+- creado_en (timestamp, default now())
+
+tabla: personas
+- id (uuid, PK)
+- invitacion_id (uuid, FK -> invitaciones.id, ON DELETE CASCADE)
+- nombre (text)
+- apellido (text)
+- genero (text, nullable) -- "M"/"F", usado para anteponer "Sr."/"Sra." SOLO si rol=principal
+- rol (text) -- 'principal' | 'acompanante'
+- asistira (boolean, nullable) -- null = pendiente de responder; true/false = esa
+  persona específica asistirá o no. Permite asistencia parcial dentro de una misma
+  invitación (ej. una pareja invitada donde solo uno de los dos puede ir).
+- parentesco (text, nullable) -- dato de referencia del listado original, solo panel admin
+- categoria (text, nullable) -- ej. "Familia cercana", "Familia Chelita", "Amigos" — solo panel admin
+- notas_edad (text, nullable) -- texto libre, ej. "Menor de edad" — solo panel admin
 - creado_en (timestamp, default now())
 
 tabla: configuracion_sitio
@@ -126,12 +151,29 @@ tabla: configuracion_sitio
 - actualizado_en (timestamp)
 ```
 
-- **Row Level Security (RLS) activo desde el día uno en ambas tablas.**
-- Política pública: un invitado (vía `token_unico` en la URL) solo puede **leer su
-  propio registro** y **actualizar únicamente los campos de confirmación** de ese
-  mismo registro. No puede leer ni modificar otros registros.
+- El título ("Sr."/"Sra.") se deriva automáticamente del género, y **solo se antepone a
+  personas con `rol='principal'`** — simplificación consciente: no se distingue
+  "Srta." por estado civil. Los **acompañantes nunca llevan título**, solo su nombre y
+  apellido tal cual (independiente de su edad).
+- La tarjeta del sobre (`TarjetaInvitado`) muestra a **todos** los `personas` con
+  `rol='principal'` de la invitación (uno o varios, unidos con "&"), y la lista de
+  `rol='acompanante'` para el texto "Junto a...". Ver ejemplo: invitación con John
+  Edward + Ingree Milena (ambos principales) y sus hijas Sofia + Antonella
+  (acompañantes) → "Sr. John Edward Hernández & Sra. Ingree Milena Hernández — Junto a:
+  Sofia Hernández, Antonella Hernández".
+- `parentesco`, `categoria` y `notas_edad` son datos de referencia tomados del listado
+  original de invitados — solo se usan en el panel admin (ej. para armar mesas), nunca
+  se muestran en el sitio público.
+- **Row Level Security (RLS) activo desde el día uno en las cuatro tablas.**
+- Acceso público: no hay política RLS directa sobre `invitaciones`/`personas` (un
+  token no se puede filtrar de forma segura vía RLS, ya que es un parámetro que envía
+  el cliente, no parte de la sesión). En su lugar, dos funciones `SECURITY DEFINER`
+  acotan el acceso: `obtener_invitacion(token)` (lee una invitación y sus personas
+  solo si se conoce el token exacto) y `confirmar_asistencia(token, ...)` (actualiza
+  únicamente los campos de confirmación de esa invitación). Ninguna de las dos expone
+  ni permite listar otras invitaciones.
 - Política admin: solo usuarios autenticados (Supabase Auth) tienen acceso completo
-  de lectura/escritura a ambas tablas.
+  de lectura/escritura a las cuatro tablas.
 - Links de invitado con formato `tuboda.vercel.app/inv/{token_unico}` — nunca
   `?mesa=8` o IDs adivinables/secuenciales.
 
@@ -200,6 +242,13 @@ autenticación obligatoria vía Supabase Auth. Funciones:
   mediante IA ajustados a la paleta de color del proyecto, complementados con
   SVG/CSS propio para separadores simples. Se evita cualquier asset descargado de
   sitios de invitaciones de terceros.
+  - **Excepción documentada:** la rama floral usada como transición entre
+    secciones (`public/images/rama-flor.png`) es un asset de banco de imágenes
+    (Vecteezy, licencia gratuita con atribución obligatoria) — decisión
+    consciente del 2026-08-15 tras no lograr una versión 100% original vía IA
+    sin que replicara demasiado la imagen de referencia. Requiere mantener el
+    crédito visible en el Footer (enlace al autor/asset en Vecteezy); si se
+    reemplaza por una versión propia en el futuro, se puede quitar el crédito.
 - **Paleta de colores:** a definir con los novios (pendiente de esta especificación,
   input necesario antes de iniciar el desarrollo).
 - **Video/animación de fondo (si aplica):** banco de videos libres (Pexels, Pixabay,

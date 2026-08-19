@@ -3,23 +3,39 @@
 import { motion } from "framer-motion";
 import { Monograma } from "@/components/portada/monograma";
 
-export type InvitadoInfo = {
-  titulo: string;
+export type PersonaInvitado = {
+  id: string;
   nombre: string;
-  mesa: number;
-  cupos: number;
-  /**
-   * Nombres de las personas que acompañan al invitado principal.
-   * Nota: el modelo de datos actual (CLAUDE.md §5) solo guarda `cupos`
-   * como número; para mostrar nombres reales de acompañantes habrá que
-   * extender el esquema de Supabase (tabla o columna adicional) cuando
-   * se conecte la base de datos real.
-   */
-  acompanantes: string[];
+  apellido: string;
+  genero: "M" | "F" | null;
+  rol: "principal" | "acompanante";
+  /** null = aún no respondió; true/false = esa persona asistirá o no. */
+  asistira: boolean | null;
 };
+
+export type InvitadoInfo = {
+  cupos: number;
+  /** Texto que reemplaza el mensaje genérico de bienvenida en la Portada
+   * cuando tiene contenido (ver CLAUDE.md §5, columna `mensaje_personalizado`). */
+  mensajePersonalizado: string | null;
+  personas: PersonaInvitado[];
+};
+
+function nombreCompleto(p: PersonaInvitado) {
+  return `${p.nombre} ${p.apellido}`.trim();
+}
+
+function conTitulo(p: PersonaInvitado) {
+  const nombre = nombreCompleto(p);
+  if (p.genero === "M") return `Sr. ${nombre}`;
+  if (p.genero === "F") return `Sra. ${nombre}`;
+  return nombre;
+}
 
 export function TarjetaInvitado({ invitado }: { invitado: InvitadoInfo }) {
   const etiquetaCupos = invitado.cupos === 1 ? "cupo" : "cupos";
+  const principales = invitado.personas.filter((p) => p.rol === "principal");
+  const acompanantes = invitado.personas.filter((p) => p.rol === "acompanante");
 
   return (
     <motion.div
@@ -30,14 +46,14 @@ export function TarjetaInvitado({ invitado }: { invitado: InvitadoInfo }) {
     >
       <Monograma />
       <h2 className="text-3xl text-ink sm:text-4xl">
-        {invitado.titulo} {invitado.nombre}
+        {principales.map(conTitulo).join(" & ")}
       </h2>
       <p className="font-serif text-sm uppercase tracking-[0.2em] text-ink-soft">
         {invitado.cupos} {etiquetaCupos}
       </p>
-      {invitado.acompanantes.length > 0 && (
+      {acompanantes.length > 0 && (
         <p className="max-w-xs text-sm text-ink-soft">
-          Acompañado de {invitado.acompanantes.join(", ")}
+          Junto a {acompanantes.map(nombreCompleto).join(", ")}
         </p>
       )}
     </motion.div>

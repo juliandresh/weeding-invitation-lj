@@ -49,3 +49,6 @@ next-env.d.ts
 /music/
 /fotos-originales/
 /assets-originales/
+
+# datos sensibles de invitados (nombres, teléfonos, etc.) — nunca al repo
+/datos-privados/

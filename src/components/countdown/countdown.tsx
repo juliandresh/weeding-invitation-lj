@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Divider } from "@/components/ui/divider";
+import { PetalosCayendo } from "@/components/ui/petalos-cayendo";
 import { Reveal } from "@/components/ui/reveal";
 import { FECHA_BODA } from "@/lib/site-config";
 
@@ -75,9 +76,10 @@ export function Countdown() {
 
   return (
     <section className="relative bg-gradient-to-b from-ivory via-sky-soft/50 to-ivory px-6 py-20 sm:py-28">
+      <PetalosCayendo />
       <Reveal
         amount={0.4}
-        className="mx-auto flex max-w-xl flex-col items-center gap-6 text-center"
+        className="relative mx-auto flex max-w-xl flex-col items-center gap-6 text-center"
       >
         <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
           Falta muy poco

@@ -1,15 +1,34 @@
 import type { InvitadoInfo } from "@/components/invitado/tarjeta-invitado";
 
 /**
- * Invitado de ejemplo usado en la Portada mientras el proyecto de
- * Supabase y la lista real de invitados no estén listos (CLAUDE.md §10).
- * Cuando existan, esto se reemplaza por una ruta dinámica /inv/[token]
- * que consulte la base de datos por token_unico.
+ * Invitado de ejemplo usado en la Portada de "/" (la raíz del sitio, sin
+ * token) — sirve como demo/preview para los novios. Los invitados reales
+ * acceden por su link personal /inv/{token_unico}, que consulta Supabase.
  */
+// Token inexistente a propósito: en la demo de "/" el RSVP se ve y se puede
+// probar, pero al enviarlo la API respondería "Invitación no encontrada"
+// (no hay fila real en Supabase detrás de este token).
+export const TOKEN_DEMO = "00000000-0000-0000-0000-000000000000";
+
 export const INVITADO_EJEMPLO: InvitadoInfo = {
-  titulo: "Sra.",
-  nombre: "Liseth López",
-  mesa: 5,
   cupos: 2,
-  acompanantes: ["Carlos Ramírez"],
+  mensajePersonalizado: null,
+  personas: [
+    {
+      id: "demo-1",
+      nombre: "Liseth",
+      apellido: "López",
+      genero: "F",
+      rol: "principal",
+      asistira: null,
+    },
+    {
+      id: "demo-2",
+      nombre: "Carlos",
+      apellido: "Ramírez",
+      genero: "M",
+      rol: "acompanante",
+      asistira: null,
+    },
+  ],
 };

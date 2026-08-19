@@ -3,17 +3,22 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useAudio } from "@/components/audio/audio-context";
-import { TarjetaInvitado } from "@/components/invitado/tarjeta-invitado";
-import { INVITADO_EJEMPLO } from "@/lib/mock-invitado";
+import {
+  TarjetaInvitado,
+  type InvitadoInfo,
+} from "@/components/invitado/tarjeta-invitado";
+import { PetalosCayendo } from "@/components/ui/petalos-cayendo";
 import { Sobre } from "./sobre";
 
 const NOVIA = "Liliana";
 const NOVIO = "Julián";
 
+const MENSAJE_GENERICO = "Sabemos que este día no sería igual sin ti.";
+
 // Coincide con la duración de la animación de apertura del sobre en Sobre.tsx
 const REVEAL_DELAY_MS = 950;
 
-export function Portada() {
+export function Portada({ invitado }: { invitado: InvitadoInfo }) {
   const { start } = useAudio();
   const [revealed, setRevealed] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -62,12 +67,14 @@ export function Portada() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,var(--color-sky-soft),transparent_60%)]"
       />
 
+      <PetalosCayendo />
+
       {!revealed && (
         <div className="relative z-10 flex flex-col items-center gap-6">
-          <TarjetaInvitado invitado={INVITADO_EJEMPLO} />
+          <TarjetaInvitado invitado={invitado} />
           <p className="max-w-md text-lg text-ink-soft">
-            Sabemos que este día no sería igual sin ti. Toca el sobre para
-            descubrir los detalles de nuestra celebración.
+            {invitado.mensajePersonalizado ?? MENSAJE_GENERICO} Toca el sobre
+            para descubrir los detalles de nuestra celebración.
           </p>
           <Sobre onOpen={handleOpen} />
         </div>
