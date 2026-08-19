@@ -102,13 +102,12 @@ indispensable, ya que los invitados son familiares/amigos y el subdominio
     personas detalladas en ella (sin acompañantes adicionales no listados)
 14. **Footer** — créditos discretos
 
-> **Nota sobre "Agradecimiento a los padres":** el texto actual (`src/components/agradecimiento/agradecimiento.tsx`)
-> es un placeholder genérico y deliberadamente **no nombra a los padres
-> individualmente**. Al revisar el listado de invitados solo se identifica
-> claramente a 3 de los 4 (Madre de la novia, Mamá y Papá del novio; no hay
-> ningún registro con parentesco "Padre de la novia") — nombrar a tres y omitir
-> a uno por accidente sería peor que no nombrar a ninguno. Si los novios
-> quieren mencionarlos por nombre, deben decidirlo ellos conscientemente.
+> **Nota sobre "Agradecimiento a los padres":** el texto (`src/components/agradecimiento/agradecimiento.tsx`)
+> nombra a los cuatro padres: María Otilia, Rosa Inés y Arnulfo, y también a
+> Libardo (padre de Liliana), quien falleció hace varios años y por eso no
+> aparece en el listado de invitados — se decidió conscientemente incluirlo
+> por nombre, con el apodo cariñoso que le daba a Liliana ("Chiquis"), en vez
+> de omitirlo. Texto acordado y finalizado con los novios el 2026-08-19.
 
 > **Nota:** hubo una sección "Sugerencias" (hoteles y sitios turísticos cerca de
 > la Hacienda La Victoria) que se quitó el 2026-08-19 por decisión de los novios
