@@ -17,9 +17,20 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
 });
 
+// Necesaria para que el og:image (vista previa en WhatsApp, etc.) resuelva
+// a una URL absoluta real en vez de caer en localhost — actualizar si
+// alguna vez se agrega un dominio propio (CLAUDE.md §2).
+const SITE_URL = "https://weeding-invitation-lj.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Liliana & Julián | Nos casamos",
   description: "Invitación digital de nuestra boda",
+  openGraph: {
+    title: "Liliana & Julián | Nos casamos",
+    description: "Invitación digital de nuestra boda",
+    siteName: "Liliana & Julián",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
