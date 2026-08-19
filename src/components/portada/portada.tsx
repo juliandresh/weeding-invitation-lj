@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useAudio } from "@/components/audio/audio-context";
 import {
@@ -90,9 +91,48 @@ export function Portada({ invitado }: { invitado: InvitadoInfo }) {
           <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
             Nos casamos
           </p>
-          <h1 className="text-6xl leading-tight font-script text-ink sm:text-7xl">
-            {NOVIA} <span className="text-gold">&amp;</span> {NOVIO}
-          </h1>
+          <div className="relative">
+            <h1 className="text-5xl leading-tight font-script text-ink sm:text-7xl">
+              {NOVIA} <span className="text-gold">&amp;</span> {NOVIO}
+            </h1>
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute top-1 -left-9 h-11 w-11 sm:top-2 sm:-left-20 sm:h-20 sm:w-20"
+              initial={{ opacity: 0, x: -30, y: -10, rotate: -15, scale: 0.6 }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                y: [0, -6, 0],
+                rotate: [0, -4, 0],
+                scale: 1,
+              }}
+              transition={{
+                opacity: { duration: 0.6, delay: 0.7 },
+                x: { duration: 0.6, delay: 0.7 },
+                scale: { duration: 0.6, delay: 0.7, ease: "easeOut" },
+                y: {
+                  duration: 2.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.3,
+                },
+                rotate: {
+                  duration: 2.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.3,
+                },
+              }}
+            >
+              <Image
+                src="/images/colibri-duotono.png"
+                alt=""
+                width={1000}
+                height={1000}
+                className="h-full w-full object-contain"
+              />
+            </motion.div>
+          </div>
           <p className="max-w-md text-lg text-ink-soft">
             Con inmensa alegría y la bendición de Dios, los invitamos a
             celebrar el inicio de nuestra nueva vida juntos.
