@@ -79,17 +79,18 @@ indispensable, ya que los invitados son familiares/amigos y el subdominio
 ## 4. Secciones del sitio (inspiradas en el patrón de invitaciones digitales, contenido y diseño originales)
 
 1. **Portada** — nombre de los novios, mensaje de bienvenida, sobre animado (clic para abrir)
-2. **Introducción** — mensaje/historia de la pareja
-3. **Cuenta regresiva** — días/horas/minutos/segundos hasta el evento
-4. **Itinerario** — horario del día (ceremonia, recepción, fiesta)
-5. **Ceremonia y Recepción** — lugar, hora, botón "Cómo llegar" (link a Google Maps)
-6. **Galería** — fotos de la sesión profesional
-7. **Frase/cita** (opcional, textual propia)
-8. **Dress code** — sugerencias de vestimenta
-9. **Comparte tus fotos** — **código QR de acceso al álbum digital** (servicio de
+2. **Agradecimiento a los padres** — mensaje honrando a los padres de los novios (texto
+   placeholder por ahora, pendiente de que los novios lo personalicen — ver nota abajo)
+3. **Introducción** — mensaje/historia de la pareja
+4. **Cuenta regresiva** — días/horas/minutos/segundos hasta el evento
+5. **Itinerario** — horario del día (ceremonia, recepción, fiesta)
+6. **Ceremonia y Recepción** — lugar, hora, botón "Cómo llegar" (link a Google Maps)
+7. **Galería** — fotos de la sesión profesional
+8. **Frase/cita** (opcional, textual propia)
+9. **Dress code** — sugerencias de vestimenta
+10. **Comparte tus fotos** — **código QR de acceso al álbum digital** (servicio de
     terceros contratado aparte) para que los invitados suban sus fotos del día del
     evento
-10. **Sugerencias** — hoteles y sitios turísticos cercanos
 11. **Notas** — avisos importantes para los invitados (ej. celebración solo para
     adultos, recomendación de elegir conductor designado con anticipación)
 12. **Regalos** — mensaje sobre lluvia de sobres, sin datos bancarios expuestos
@@ -100,6 +101,20 @@ indispensable, ya que los invitados son familiares/amigos y el subdominio
     que la invitación es personal/intransferible y solo incluye a las
     personas detalladas en ella (sin acompañantes adicionales no listados)
 14. **Footer** — créditos discretos
+
+> **Nota sobre "Agradecimiento a los padres":** el texto actual (`src/components/agradecimiento/agradecimiento.tsx`)
+> es un placeholder genérico y deliberadamente **no nombra a los padres
+> individualmente**. Al revisar el listado de invitados solo se identifica
+> claramente a 3 de los 4 (Madre de la novia, Mamá y Papá del novio; no hay
+> ningún registro con parentesco "Padre de la novia") — nombrar a tres y omitir
+> a uno por accidente sería peor que no nombrar a ninguno. Si los novios
+> quieren mencionarlos por nombre, deben decidirlo ellos conscientemente.
+
+> **Nota:** hubo una sección "Sugerencias" (hoteles y sitios turísticos cerca de
+> la Hacienda La Victoria) que se quitó el 2026-08-19 por decisión de los novios
+> — no se considera necesaria por ahora. El componente se eliminó del código; si
+> se quiere retomar más adelante, la investigación de hoteles/sitios ya se hizo
+> una vez (ver historial de git) y se puede reconstruir rápido.
 
 ---
 

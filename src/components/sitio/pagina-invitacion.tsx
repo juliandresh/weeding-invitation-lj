@@ -1,3 +1,4 @@
+import { Agradecimiento } from "@/components/agradecimiento/agradecimiento";
 import { CeremoniaRecepcion } from "@/components/ceremonia/ceremonia-recepcion";
 import { CompartirFotos } from "@/components/compartir-fotos/compartir-fotos";
 import { Countdown } from "@/components/countdown/countdown";
@@ -12,7 +13,6 @@ import { Notas } from "@/components/notas/notas";
 import { Portada } from "@/components/portada/portada";
 import { Regalos } from "@/components/regalos/regalos";
 import { Rsvp } from "@/components/rsvp/rsvp";
-import { Sugerencias } from "@/components/sugerencias/sugerencias";
 import { SectionBranches } from "@/components/ui/section-branches";
 
 // Composición completa del sitio, compartida entre "/" (demo con invitado de
@@ -32,6 +32,8 @@ export function PaginaInvitacion({
       <main className="flex flex-1 flex-col">
         <Portada invitado={invitado} />
         <SectionBranches />
+        <Agradecimiento />
+        <SectionBranches />
         <Historia />
         <SectionBranches />
         <Countdown />
@@ -47,8 +49,6 @@ export function PaginaInvitacion({
         <DressCode />
         <SectionBranches />
         <CompartirFotos />
-        <SectionBranches />
-        <Sugerencias />
         <SectionBranches />
         <Notas />
         <SectionBranches />
