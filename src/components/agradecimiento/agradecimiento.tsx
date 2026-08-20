@@ -3,13 +3,9 @@
 import { Divider } from "@/components/ui/divider";
 import { Reveal } from "@/components/ui/reveal";
 
-// Texto final acordado con los novios el 2026-08-19. Libardo, el padre de
-// Liliana, falleció hace varios años y por eso no aparece en el listado de
-// invitados — se decidió conscientemente incluirlo por nombre junto a los
-// otros tres padres, con el apodo cariñoso que él le daba a Liliana
-// ("Chiquis"), en vez de omitirlo.
+// Texto final acordado con los novios el 2026-08-19. 
 const MENSAJE =
-  "Antes de comenzar esta nueva etapa, queremos detenernos a agradecer a quienes nos dieron la vida y nos enseñaron a amar. A nuestros padres —María Otilia, Rosa Inés y Arnulfo— gracias por cada sacrificio silencioso, por las palabras justas en el momento preciso, y por creer en nosotros incluso cuando dudábamos. Y a Libardo, el padre de Liliana, que nos acompaña hoy desde otro lugar: aquella “Chiquis” a la que tanto amaste por fin se casa, y lleva tu amor en cada paso que da. Todo lo que somos hoy —y todo el amor que hoy compartimos— nace de lo que ustedes sembraron primero. Este día es también suyo.";
+  "Antes de comenzar esta nueva etapa, queremos detenernos a agradecer a quienes nos dieron la vida y nos enseñaron a amar. A nuestros padres — María Otilia, Rosa Inés y Arnulfo — gracias por cada sacrificio silencioso, por las palabras justas en el momento preciso, y por creer en nosotros incluso cuando dudábamos. Y a Libardo, el padre de Liliana, que nos acompaña hoy desde otro lugar: aquella “Chiquis” a la que tanto amaste por fin se casa, y lleva tu amor en cada paso que da. Todo lo que somos hoy y todo el amor que hoy compartimos, nace de lo que ustedes sembraron primero. Este día es también suyo.";
 
 export function Agradecimiento() {
   return (
