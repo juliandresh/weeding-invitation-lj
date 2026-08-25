@@ -86,6 +86,28 @@ export function Footer() {
             Littlestar 0816 en Vecteezy
           </a>
         </span>
+        <span>
+          Ramo de flores de{" "}
+          <a
+            href="https://www.vecteezy.com/-/68185675-bouquet-of-white-daisies-blooming-fresh-simple-countryside-flowers"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-ivory-soft/60"
+          >
+            Ghulam Raza en Vecteezy
+          </a>
+        </span>
+        <span>
+          Abeja de{" "}
+          <a
+            href="https://www.vecteezy.com/-/65276349-close-up-of-a-honey-bee-showcasing-intricate-details-and-wings"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-ivory-soft/60"
+          >
+            Serhii Khmel en Vecteezy
+          </a>
+        </span>
       </p>
     </motion.footer>
   );

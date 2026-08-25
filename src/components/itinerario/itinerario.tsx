@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import { CorazonesCayendo } from "@/components/ui/corazones-cayendo";
 import { Divider } from "@/components/ui/divider";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -29,9 +30,10 @@ const itemVariants: Variants = {
 export function Itinerario() {
   return (
     <section className="relative bg-ivory px-6 py-20 sm:py-28">
+      <CorazonesCayendo />
       <Reveal
         amount={0.3}
-        className="mx-auto flex max-w-md flex-col items-center gap-6 text-center"
+        className="relative mx-auto flex max-w-md flex-col items-center gap-6 text-center"
       >
         <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
           El gran día

@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { PersonaInvitado } from "@/components/invitado/tarjeta-invitado";
 import { Confetti } from "@/components/ui/confetti";
 import { Divider } from "@/components/ui/divider";
+import { PetalosCayendo } from "@/components/ui/petalos-cayendo";
 import { Reveal } from "@/components/ui/reveal";
 import { RSVP_FECHA_LIMITE, RSVP_NOTA_EXCLUSIVIDAD } from "@/lib/site-config";
 import { type TurnstileHandle, TurnstileWidget } from "./turnstile-widget";
@@ -114,10 +115,11 @@ export function Rsvp({
       id="rsvp"
       className="relative bg-gradient-to-b from-ivory via-sky-soft/50 to-ivory px-6 py-20 sm:py-28"
     >
+      <PetalosCayendo />
       <Confetti activo={celebrar} />
       <Reveal
         amount={0.3}
-        className="mx-auto flex max-w-xl flex-col items-center gap-6 text-center"
+        className="relative mx-auto flex max-w-xl flex-col items-center gap-6 text-center"
       >
         <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
           Confirmación de asistencia
@@ -162,13 +164,25 @@ export function Rsvp({
         )}
 
         {!abierto && !fechaLimitePasada && (
-          <button
-            type="button"
-            onClick={() => setAbierto(true)}
-            className="mt-2 inline-flex items-center gap-2 rounded-full border border-gold px-6 py-2.5 text-xs uppercase tracking-[0.15em] text-gold transition hover:bg-gold hover:text-ivory"
-          >
-            {yaRespondio ? "Editar mi respuesta" : "Confirmar asistencia"}
-          </button>
+          <div className="relative mt-2">
+            {!yaRespondio && (
+              <motion.div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[radial-gradient(circle,var(--color-gold-soft)_0%,transparent_70%)] blur-xl"
+                animate={{ opacity: [0.35, 0.65, 0.35], scale: [0.9, 1.2, 0.9] }}
+                transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+              />
+            )}
+            <motion.button
+              type="button"
+              onClick={() => setAbierto(true)}
+              className="relative inline-flex items-center gap-2 rounded-full border border-gold px-6 py-2.5 text-xs uppercase tracking-[0.15em] text-gold transition hover:bg-gold hover:text-ivory"
+              animate={yaRespondio ? {} : { scale: [1, 1.05, 1] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              {yaRespondio ? "Editar mi respuesta" : "Confirmar asistencia"}
+            </motion.button>
+          </div>
         )}
 
         <AnimatePresence>

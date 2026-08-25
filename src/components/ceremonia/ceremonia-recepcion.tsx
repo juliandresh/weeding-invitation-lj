@@ -1,7 +1,9 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import Image from "next/image";
 import { Divider } from "@/components/ui/divider";
+import { PetalosCayendo } from "@/components/ui/petalos-cayendo";
 import { Reveal } from "@/components/ui/reveal";
 
 const DIRECCION = "Vía Subachoque, Subachoque, Cundinamarca";
@@ -65,16 +67,46 @@ function IconoPin() {
 export function CeremoniaRecepcion() {
   return (
     <section className="relative bg-gradient-to-b from-ivory via-sky-soft/50 to-ivory px-6 py-20 sm:py-28">
+      <PetalosCayendo />
       <Reveal
         amount={0.3}
-        className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center"
+        className="relative mx-auto flex max-w-3xl flex-col items-center gap-6 text-center"
       >
         <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
           Nos vemos en
         </p>
-        <h2 className="font-script text-5xl text-ink sm:text-6xl">
-          Hacienda La Victoria
-        </h2>
+        <div className="relative">
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-1 -left-5 h-8 w-8 sm:top-2 sm:-left-28 sm:h-20 sm:w-20"
+            initial={{ opacity: 0, x: -30, y: -6, rotate: -10, scale: 0.6 }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              y: [0, 6, 0],
+              rotate: [0, -3, 0],
+              scale: 1,
+            }}
+            transition={{
+              opacity: { duration: 0.6, delay: 0.5 },
+              x: { duration: 0.6, delay: 0.5 },
+              scale: { duration: 0.6, delay: 0.5, ease: "easeOut" },
+              y: { duration: 3.4, repeat: Infinity, ease: "easeInOut", delay: 1.1 },
+              rotate: { duration: 3.4, repeat: Infinity, ease: "easeInOut", delay: 1.1 },
+            }}
+          >
+            <Image
+              src="/images/bouquet-duotono.png"
+              alt=""
+              width={600}
+              height={600}
+              className="h-full w-full object-contain"
+            />
+          </motion.div>
+          <h2 className="font-script text-5xl text-ink sm:text-6xl">
+            Hacienda La Victoria
+          </h2>
+        </div>
         <p className="text-ink-soft">{DIRECCION}</p>
         <Divider />
 

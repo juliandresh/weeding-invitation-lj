@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Divider } from "@/components/ui/divider";
+import { PetalosCayendo } from "@/components/ui/petalos-cayendo";
 import { Reveal } from "@/components/ui/reveal";
 
 // Iconos placeholder (SVG, silueta simple) — más adelante se pueden
@@ -87,9 +88,10 @@ function Paleta({ colores }: { colores: { nombre: string; hex: string }[] }) {
 export function DressCode() {
   return (
     <section className="relative bg-gradient-to-b from-ivory via-sky-soft/50 to-ivory px-6 py-20 sm:py-28">
+      <PetalosCayendo />
       <Reveal
         amount={0.2}
-        className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center"
+        className="relative mx-auto flex max-w-3xl flex-col items-center gap-6 text-center"
       >
         <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
           Cómo vestir

@@ -1,6 +1,7 @@
 "use client";
 
 import { Divider } from "@/components/ui/divider";
+import { PetalosCayendo } from "@/components/ui/petalos-cayendo";
 import { Reveal } from "@/components/ui/reveal";
 
 function IconoCopa() {
@@ -23,9 +24,10 @@ function IconoCopa() {
 export function Notas() {
   return (
     <section className="relative bg-ivory px-6 py-20 sm:py-28">
+      <PetalosCayendo />
       <Reveal
         amount={0.4}
-        className="mx-auto flex max-w-lg flex-col items-center gap-5 text-center"
+        className="relative mx-auto flex max-w-lg flex-col items-center gap-5 text-center"
       >
         <div className="text-gold">
           <IconoCopa />
