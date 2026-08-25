@@ -10,10 +10,17 @@ export function Sobre({ onOpen }: { onOpen: () => void }) {
   function handleClick() {
     if (isOpening) return;
     setIsOpening(true);
-    if (typeof navigator !== "undefined" && "vibrate" in navigator) {
-      navigator.vibrate(18);
-    }
     onOpen();
+    // Algunos navegadores/WebViews móviles exponen navigator.vibrate pero
+    // lanzan una excepción al llamarlo (política de permisos, sin gesto de
+    // usuario reconocido, etc.) — nunca debe poder bloquear la apertura.
+    try {
+      if (typeof navigator !== "undefined" && "vibrate" in navigator) {
+        navigator.vibrate(18);
+      }
+    } catch {
+      // silenciosamente ignorado: la vibración es un extra, no crítico
+    }
   }
 
   return (

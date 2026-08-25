@@ -75,6 +75,17 @@ export function Footer() {
             Zikku Creative en Vecteezy
           </a>
         </span>
+        <span>
+          Beagle de{" "}
+          <a
+            href="https://es.vecteezy.com/png/55136015-beagle-perro-retrato-animal-fotografia-estudio-ajuste-de-cerca-ver-mascota-concepto"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-ivory-soft/60"
+          >
+            Littlestar 0816 en Vecteezy
+          </a>
+        </span>
       </p>
     </motion.footer>
   );
