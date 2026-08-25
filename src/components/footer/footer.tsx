@@ -64,6 +64,17 @@ export function Footer() {
             korawik phansawai en Vecteezy
           </a>
         </span>
+        <span>
+          Guacamayas de{" "}
+          <a
+            href="https://es.vecteezy.com/png/57753650-romantico-loro-pareja-encaramado-en-un-artisticamente-hecho-a-mano-arbol-rama-en-transparente-antecedentes"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-ivory-soft/60"
+          >
+            Zikku Creative en Vecteezy
+          </a>
+        </span>
       </p>
     </motion.footer>
   );

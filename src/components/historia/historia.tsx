@@ -1,6 +1,9 @@
 "use client";
 
+import { motion } from "framer-motion";
+import Image from "next/image";
 import { Divider } from "@/components/ui/divider";
+import { PetalosCayendo } from "@/components/ui/petalos-cayendo";
 import { Reveal } from "@/components/ui/reveal";
 
 // Texto placeholder — reemplazar con la historia real de la pareja.
@@ -12,16 +15,56 @@ const PARRAFOS = [
 export function Historia() {
   return (
     <section className="relative bg-ivory-soft px-6 py-20 sm:py-28">
+      <PetalosCayendo />
       <Reveal
         amount={0.4}
-        className="mx-auto flex max-w-xl flex-col items-center gap-6 text-center"
+        className="relative mx-auto flex max-w-xl flex-col items-center gap-6 text-center"
       >
         <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
           Nuestra historia
         </p>
-        <h2 className="font-script text-5xl text-ink sm:text-6xl">
-          Cómo empezó todo
-        </h2>
+        <div className="relative">
+          <h2 className="font-script text-5xl text-ink sm:text-6xl">
+            Cómo empezó todo
+          </h2>
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-1 -right-16 h-11 w-16 sm:top-2 sm:-right-32 sm:h-20 sm:w-28"
+            initial={{ opacity: 0, x: 30, y: -6, rotate: 8, scale: 0.6 }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              y: [0, 5, 0],
+              rotate: [0, 2, 0],
+              scale: 1,
+            }}
+            transition={{
+              opacity: { duration: 0.6, delay: 0.5 },
+              x: { duration: 0.6, delay: 0.5 },
+              scale: { duration: 0.6, delay: 0.5, ease: "easeOut" },
+              y: {
+                duration: 3.4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.1,
+              },
+              rotate: {
+                duration: 3.4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.1,
+              },
+            }}
+          >
+            <Image
+              src="/images/guacamayas-duotono.png"
+              alt=""
+              width={700}
+              height={560}
+              className="h-full w-full object-contain"
+            />
+          </motion.div>
+        </div>
         <Divider />
         <div className="flex flex-col gap-4">
           {PARRAFOS.map((texto) => (
