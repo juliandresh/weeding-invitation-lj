@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { BurbujasSubiendo } from "@/components/ui/burbujas-subiendo";
 import { Divider } from "@/components/ui/divider";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -12,9 +13,10 @@ const MENSAJE =
 export function Agradecimiento() {
   return (
     <section className="relative bg-ivory px-6 py-20 sm:py-28">
+      <BurbujasSubiendo />
       <Reveal
         amount={0.4}
-        className="mx-auto flex max-w-xl flex-col items-center gap-6 text-center"
+        className="relative mx-auto flex max-w-xl flex-col items-center gap-6 text-center"
       >
         <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
           Con gratitud
