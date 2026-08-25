@@ -30,16 +30,40 @@ export function Footer() {
         nosotros.
       </p>
 
-      <p className="mt-8 text-[10px] tracking-wide text-ivory-soft/35">
-        Ilustración floral de{" "}
-        <a
-          href="https://www.vecteezy.com/-/49105002-branch-of-flowering-tree-with-white-flowers-and-green-leaves-on-transparent-background-ai-generative"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline underline-offset-2 hover:text-ivory-soft/60"
-        >
-          Mujhaid Wakeel en Vecteezy
-        </a>
+      <p className="mx-auto mt-8 flex max-w-sm flex-col gap-1 text-[10px] tracking-wide text-ivory-soft/35">
+        <span>
+          Ilustración floral de{" "}
+          <a
+            href="https://www.vecteezy.com/-/49105002-branch-of-flowering-tree-with-white-flowers-and-green-leaves-on-transparent-background-ai-generative"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-ivory-soft/60"
+          >
+            Mujhaid Wakeel en Vecteezy
+          </a>
+        </span>
+        <span>
+          Colibrí de{" "}
+          <a
+            href="https://es.vecteezy.com/png/58301942-artistico-ilustracion-de-un-vistoso-colibri"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-ivory-soft/60"
+          >
+            Ikramul Islam Sifat en Vecteezy
+          </a>
+        </span>
+        <span>
+          Tortuga marina de{" "}
+          <a
+            href="https://es.vecteezy.com/png/66667621-vibrante-mar-tortuga-nada-graciosamente-entre-vistoso-coral-arrecifes-exhibiendo-belleza-de-marina-fauna-silvestre-intrincado-detalles-de-tortuga-cascara-y-rodeando-corales-crear-cautivador-submarino-escena"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-ivory-soft/60"
+          >
+            korawik phansawai en Vecteezy
+          </a>
+        </span>
       </p>
     </motion.footer>
   );

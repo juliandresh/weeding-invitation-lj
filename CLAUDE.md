@@ -195,8 +195,11 @@ tabla: configuracion_sitio
 
 ## 6. Panel de administración
 
-Ruta protegida (ej. `/admin`), no indexable por buscadores (`robots.txt`),
-autenticación obligatoria vía Supabase Auth. Funciones:
+Ruta protegida: `/cheladmin` (no `/admin` — deliberadamente un nombre poco
+común, para no ser un blanco obvio de escaneo automático; ver CLAUDE.md §7).
+No se lista en `robots.txt` a propósito, por la misma razón — listar ahí una
+ruta "oculta" la anuncia exactamente a quien no se quiere que la encuentre.
+Autenticación obligatoria vía Supabase Auth. Funciones:
 
 - CRUD de invitados (crear, editar, eliminar, ver estado de confirmación)
 - Generación automática del link único por invitado

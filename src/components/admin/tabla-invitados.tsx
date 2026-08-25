@@ -73,7 +73,7 @@ export function TablaInvitados({ filas }: { filas: FilaInvitado[] }) {
                   </td>
                   <td className="px-4 py-3 text-right">
                     <Link
-                      href={`/admin/invitados/${f.id}`}
+                      href={`/cheladmin/invitados/${f.id}`}
                       className="text-xs uppercase tracking-[0.08em] text-gold underline underline-offset-2 hover:opacity-80"
                     >
                       Editar

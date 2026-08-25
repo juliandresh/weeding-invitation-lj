@@ -47,7 +47,7 @@ export function PanelInvitacion({ invitacion }: { invitacion: Invitacion }) {
     setError(null);
     const fd = new FormData(e.currentTarget);
     try {
-      await llamar(`/admin/api/invitaciones/${invitacion.id}`, {
+      await llamar(`/cheladmin/api/invitaciones/${invitacion.id}`, {
         method: "PATCH",
         body: JSON.stringify(Object.fromEntries(fd)),
       });
@@ -64,7 +64,7 @@ export function PanelInvitacion({ invitacion }: { invitacion: Invitacion }) {
     setError(null);
     const fd = new FormData(e.currentTarget);
     try {
-      await llamar(`/admin/api/personas/${personaId}`, {
+      await llamar(`/cheladmin/api/personas/${personaId}`, {
         method: "PATCH",
         body: JSON.stringify(Object.fromEntries(fd)),
       });
@@ -79,7 +79,7 @@ export function PanelInvitacion({ invitacion }: { invitacion: Invitacion }) {
     setError(null);
     try {
       await llamar(
-        `/admin/api/personas/${personaId}?invitacion_id=${invitacion.id}`,
+        `/cheladmin/api/personas/${personaId}?invitacion_id=${invitacion.id}`,
         { method: "DELETE" }
       );
       router.refresh();
@@ -93,7 +93,7 @@ export function PanelInvitacion({ invitacion }: { invitacion: Invitacion }) {
     setError(null);
     const fd = new FormData(e.currentTarget);
     try {
-      await llamar(`/admin/api/invitaciones/${invitacion.id}/personas`, {
+      await llamar(`/cheladmin/api/invitaciones/${invitacion.id}/personas`, {
         method: "POST",
         body: JSON.stringify(Object.fromEntries(fd)),
       });
@@ -113,8 +113,8 @@ export function PanelInvitacion({ invitacion }: { invitacion: Invitacion }) {
       return;
     setError(null);
     try {
-      await llamar(`/admin/api/invitaciones/${invitacion.id}`, { method: "DELETE" });
-      router.push("/admin/invitados");
+      await llamar(`/cheladmin/api/invitaciones/${invitacion.id}`, { method: "DELETE" });
+      router.push("/cheladmin/invitados");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error inesperado");
     }

@@ -22,13 +22,13 @@ export default async function InvitadosPage() {
           <h1 className="text-2xl text-ink">Invitados</h1>
           <div className="flex gap-4">
             <a
-              href="/admin/export"
+              href="/cheladmin/export"
               className="rounded-full border border-gold/40 px-5 py-2 text-xs uppercase tracking-[0.1em] text-ink-soft transition hover:bg-ivory-soft"
             >
               Exportar CSV
             </a>
             <Link
-              href="/admin/invitados/nuevo"
+              href="/cheladmin/invitados/nuevo"
               className="rounded-full bg-gold px-5 py-2 text-xs uppercase tracking-[0.1em] text-ivory transition hover:opacity-90"
             >
               + Nueva invitación

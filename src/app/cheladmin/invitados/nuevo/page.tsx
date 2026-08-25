@@ -15,7 +15,7 @@ export default function NuevaInvitacionPage() {
     setError(null);
 
     const formData = new FormData(e.currentTarget);
-    const res = await fetch("/admin/api/invitaciones", {
+    const res = await fetch("/cheladmin/api/invitaciones", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -32,7 +32,7 @@ export default function NuevaInvitacionPage() {
       return;
     }
 
-    router.push(`/admin/invitados/${data.id}`);
+    router.push(`/cheladmin/invitados/${data.id}`);
   }
 
   return (

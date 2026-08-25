@@ -1,16 +1,16 @@
 import Link from "next/link";
-import { cerrarSesion } from "@/app/admin/actions";
+import { cerrarSesion } from "@/app/cheladmin/actions";
 
 export function AdminNav() {
   return (
     <nav className="flex items-center justify-between border-b border-gold/25 bg-ivory px-6 py-4">
       <div className="flex items-center gap-6">
         <span className="font-script text-2xl text-gold">Panel</span>
-        <Link href="/admin" className="text-sm text-ink-soft hover:text-ink">
+        <Link href="/cheladmin" className="text-sm text-ink-soft hover:text-ink">
           Resumen
         </Link>
         <Link
-          href="/admin/invitados"
+          href="/cheladmin/invitados"
           className="text-sm text-ink-soft hover:text-ink"
         >
           Invitados

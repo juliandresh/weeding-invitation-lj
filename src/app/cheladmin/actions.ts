@@ -9,7 +9,7 @@ import { createClient } from "@/lib/supabase/server";
 // ejecutarse (confirmado con pruebas: el mismo código funciona sin
 // problema desde un Route Handler). Login/logout sí funcionan bien como
 // Server Action (ambos llaman a un método `.auth.*` directamente). El
-// resto vive en Route Handlers bajo /admin/api/, llamados vía fetch desde
+// resto vive en Route Handlers bajo /cheladmin/api/, llamados vía fetch desde
 // componentes cliente — ver src/components/admin/panel-invitacion.tsx.
 
 export async function iniciarSesion(
@@ -26,11 +26,11 @@ export async function iniciarSesion(
     return { error: "Correo o contraseña incorrectos." };
   }
 
-  redirect("/admin");
+  redirect("/cheladmin");
 }
 
 export async function cerrarSesion() {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  redirect("/admin/login");
+  redirect("/cheladmin/login");
 }

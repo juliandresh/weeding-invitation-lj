@@ -7,7 +7,7 @@ import { createClient } from "@/lib/supabase/server";
 export const dynamic = "force-dynamic";
 
 export default async function EditarInvitacionPage(
-  props: PageProps<"/admin/invitados/[id]">
+  props: PageProps<"/cheladmin/invitados/[id]">
 ) {
   const { id } = await props.params;
 

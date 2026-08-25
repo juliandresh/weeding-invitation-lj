@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "framer-motion";
+import Image from "next/image";
 import { Divider } from "@/components/ui/divider";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -21,9 +23,48 @@ export function Agradecimiento() {
         <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
           Con gratitud
         </p>
-        <h2 className="font-script text-5xl text-ink sm:text-6xl">
-          A nuestros padres
-        </h2>
+        <div className="relative">
+          <h2 className="font-script text-5xl text-ink sm:text-6xl">
+            A nuestros padres
+          </h2>
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-0 -right-14 h-12 w-12 sm:top-1 sm:-right-28 sm:h-24 sm:w-24"
+            initial={{ opacity: 0, x: 30, y: -6, rotate: 10, scale: 0.6 }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              y: [0, 6, 0],
+              rotate: [0, 3, 0],
+              scale: 1,
+            }}
+            transition={{
+              opacity: { duration: 0.6, delay: 0.5 },
+              x: { duration: 0.6, delay: 0.5 },
+              scale: { duration: 0.6, delay: 0.5, ease: "easeOut" },
+              y: {
+                duration: 3.2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.1,
+              },
+              rotate: {
+                duration: 3.2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.1,
+              },
+            }}
+          >
+            <Image
+              src="/images/tortuga-duotono.png"
+              alt=""
+              width={1000}
+              height={1000}
+              className="h-full w-full object-contain"
+            />
+          </motion.div>
+        </div>
         <Divider />
         <p className="text-lg leading-relaxed text-ink-soft">{MENSAJE}</p>
       </Reveal>
