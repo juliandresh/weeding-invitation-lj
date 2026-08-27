@@ -78,7 +78,7 @@ export function CeremoniaRecepcion() {
         <div className="relative">
           <motion.div
             aria-hidden="true"
-            className="pointer-events-none absolute top-0 -left-6 h-11 w-11 sm:-top-2 sm:-left-40 sm:h-32 sm:w-32"
+            className="pointer-events-none absolute top-0 -left-7 h-[57px] w-[57px] sm:-top-2 sm:-left-40 sm:h-[166px] sm:w-[166px]"
             initial={{ opacity: 0, x: -30, y: -6, rotate: -10, scale: 0.6 }}
             animate={{
               opacity: 1,
