@@ -75,10 +75,10 @@ export function CeremoniaRecepcion() {
         <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
           Nos vemos en
         </p>
-        <div className="relative">
+        <div className="relative flex flex-col items-center">
           <motion.div
             aria-hidden="true"
-            className="pointer-events-none absolute top-0 -left-7 h-[57px] w-[57px] sm:-top-2 sm:-left-40 sm:h-[166px] sm:w-[166px]"
+            className="pointer-events-none mb-1 h-24 w-24 sm:absolute sm:-top-2 sm:-left-40 sm:mb-0 sm:h-[166px] sm:w-[166px]"
             initial={{ opacity: 0, x: -30, y: -6, rotate: -10, scale: 0.6 }}
             animate={{
               opacity: 1,
