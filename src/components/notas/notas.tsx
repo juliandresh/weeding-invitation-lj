@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "framer-motion";
+import Image from "next/image";
 import { Divider } from "@/components/ui/divider";
 import { PetalosCayendo } from "@/components/ui/petalos-cayendo";
 import { Reveal } from "@/components/ui/reveal";
@@ -32,7 +34,36 @@ export function Notas() {
         <div className="text-gold">
           <IconoCopa />
         </div>
-        <h2 className="font-script text-5xl text-ink sm:text-6xl">Notas</h2>
+        <div className="relative">
+          <h2 className="font-script text-5xl text-ink sm:text-6xl">Notas</h2>
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-0 -right-20 h-20 w-20 sm:top-0 sm:-right-32 sm:h-28 sm:w-28"
+            initial={{ opacity: 0, x: 30, y: -6, rotate: 10, scale: 0.6 }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              y: [0, 6, 0],
+              rotate: [0, 3, 0],
+              scale: 1,
+            }}
+            transition={{
+              opacity: { duration: 0.6, delay: 0.5 },
+              x: { duration: 0.6, delay: 0.5 },
+              scale: { duration: 0.6, delay: 0.5, ease: "easeOut" },
+              y: { duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 1.1 },
+              rotate: { duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 1.1 },
+            }}
+          >
+            <Image
+              src="/images/mariposas-duotono.png"
+              alt=""
+              width={600}
+              height={600}
+              className="h-full w-full object-contain"
+            />
+          </motion.div>
+        </div>
         <Divider />
         <p className="text-lg text-ink-soft">
           Adoramos a los más pequeños de la familia, pero en esta ocasión
