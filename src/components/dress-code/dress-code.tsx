@@ -12,6 +12,7 @@ const COLORES_DAMAS = [
   { nombre: "Blanco", hex: "#FFFFFF" },
   { nombre: "Beige", hex: "#E8DCC8" },
   { nombre: "Azul turquesa", hex: "#1CA9C9" },
+  { nombre: "Azul petróleo", hex: "#1B4F5C" },
 ];
 
 const COLORES_CABALLEROS = [
