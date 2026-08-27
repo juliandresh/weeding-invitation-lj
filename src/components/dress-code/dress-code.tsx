@@ -11,7 +11,7 @@ import { Reveal } from "@/components/ui/reveal";
 const COLORES_DAMAS = [
   { nombre: "Blanco", hex: "#FFFFFF" },
   { nombre: "Beige", hex: "#E8DCC8" },
-  { nombre: "Azul esmeralda", hex: "#0E7C78" },
+  { nombre: "Azul turquesa", hex: "#1CA9C9" },
 ];
 
 const COLORES_CABALLEROS = [
