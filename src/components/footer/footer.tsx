@@ -175,6 +175,17 @@ export function Footer() {
                   Muhammad Bilal en Vecteezy
                 </a>
               </span>
+              <span>
+                Torre Eiffel de{" "}
+                <a
+                  href="https://www.vecteezy.com/png/24098499-eiffel-tower-famous-landmark"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 hover:text-ivory-soft/60"
+                >
+                  Andres Ramos en Vecteezy
+                </a>
+              </span>
             </p>
           </motion.div>
         )}
