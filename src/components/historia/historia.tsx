@@ -13,48 +13,76 @@ function Destacado({ children }: { children: ReactNode }) {
   return <span className="text-gold">{children}</span>;
 }
 
-// Historia real de la pareja, acordada con los novios el 2026-09-02. El
-// relato está en primera persona plural salvo el momento de la propuesta en
-// París, que lo cuenta Julián — es intencional, no un descuido.
+// Historia real de la pareja, acordada con los novios el 2026-09-03. Los
+// nicknames de Messenger se muestran sin el dominio a propósito: la home es
+// pública e indexable, y publicar las direcciones completas las expondría a
+// los recolectores de spam.
 const PARRAFOS: ReactNode[] = [
   <>
-    Hace 20 años, cuando Internet apenas comenzaba a convertirse en parte de
-    nuestras vidas y Messenger era prácticamente nuestra red social favorita,
-    dos desconocidos coincidieron en una sala de chat de una emisora de rock.
+    Era el año 2006. Internet comenzaba a convertirse en parte de nuestras vidas
+    y Messenger era prácticamente nuestra red social favorita. En medio de una
+    sala de chat en la web, dos desconocidos hicieron su primer contacto de red.
   </>,
   <>
-    Ella tenía un curioso nickname: <Destacado>Chelitanew</Destacado>. Hablamos
-    de música, descubrimos gustos en común y, después de superar el gran filtro
-    de aquella época —<Destacado>agregarnos a Messenger</Destacado>—, comenzamos
-    a conocernos.
+    Ella tenía un curioso nickname: <Destacado>Chelitanew</Destacado>. Empezamos
+    hablando de rock, descubrimos gustos en común y, después de superar el gran
+    filtro de seguridad de aquella época —
+    <Destacado>agregarnos a Messenger</Destacado>—, comenzamos a conocernos.
   </>,
   <>
-    Después de muchas conversaciones llegó el momento de comprobar si la química
-    funcionaba también fuera de Internet. Y funcionó. Nuestra primera cita fue
-    en un bar de rock, donde además llegó nuestro primer beso.
+    Así fue como los usuarios <Destacado>jandrescadc</Destacado> y{" "}
+    <Destacado>chelitanew</Destacado> comenzaron a intercambiar mensajes,
+    historias, gustos y, poco a poco, algo más importante: una conexión que
+    parecía funcionar bastante bien.
   </>,
   <>
-    Fuimos novios, pero éramos jóvenes, la distancia no ayudaba y la madurez…
-    bueno, digamos que todavía estaba en proceso de instalación. La vida nos
-    separó durante algunos años, pero nunca borró completamente nuestra
-    historia.
+    Después de muchas conversaciones llegó el momento de probar la conexión en
+    el mundo real. Nuestro punto de encuentro fue frente a la Universidad
+    Central. De allí pasamos a unas cervezas y rock en el recordado Pasaje
+    Gourmet y, después de unas horas, ocurrió lo que podríamos considerar
+    nuestro primer gran deploy: <Destacado>nuestro primer beso</Destacado>.
   </>,
   <>
-    En 2011 volvimos a encontrarnos. Entre conversaciones, un viaje a la costa y
-    muchas risas, descubrimos que quizás aquella historia no había terminado.
-    Nos dimos una segunda oportunidad, y esta vez decidimos construir algo
-    juntos.
+    Fuimos novios, pero éramos jóvenes, la distancia no ayudaba (20 km en el
+    colectivo Aldea/Refugio Fontibón - 20 de Julio) y la madurez… bueno,
+    digamos que todavía estaba en proceso de instalación. Así que el sistema
+    presentó algunos inconvenientes y terminamos nuestra primera versión.
   </>,
   <>
-    A los diez meses nos fuimos a vivir con prácticamente nada: una cama, un
-    televisor, una lavadora, una nevera y una estufa. Pero teníamos lo más
-    importante: <Destacado>las ganas de construir una vida juntos</Destacado>.
+    La vida nos llevó por caminos diferentes durante algunos años, pero,
+    afortunadamente, nunca eliminamos completamente el archivo.
   </>,
   <>
-    Desde entonces hemos crecido, aprendido, viajado, cumplido sueños, cuidado
-    de nuestros animales, compartido música, hecho miles de chistes y, sobre
-    todo, aprendido que el amor también significa{" "}
-    <Destacado>cuidarse, apoyarse y elegirse todos los días</Destacado>.
+    En 2011 volvimos a encontrarnos. Entre conversaciones, un viaje a Santa
+    Marta y muchas risas, descubrimos que aquella conexión que creíamos perdida
+    todavía tenía señal, así que decidimos darle una segunda oportunidad. Esta
+    vez, con una versión un poco más madura… aunque todavía con algunos bugs
+    pendientes de corregir.
+  </>,
+  <>
+    A los diez meses decidimos dar uno de los pasos más importantes: vivir
+    juntos. No teníamos grandes recursos (el hardware era básico) pero el
+    sistema tenía algo mucho más importante:{" "}
+    <Destacado>ganas de construir juntos</Destacado>.
+  </>,
+  <>
+    Desde entonces hemos ido actualizando nuestra vida con viajes, conciertos,
+    sueños, proyectos, nuestras mascotas, música, risas y muchas experiencias.
+    También hemos aprendido que una buena relación necesita algo parecido a un
+    buen sistema: soporte, paciencia, mantenimiento, trabajo en equipo y, de vez
+    en cuando, saber cuándo reiniciar.
+  </>,
+  <>
+    Y sobre todo, descubrimos que la mejor función de trabajar en equipo es
+    tener siempre a alguien que{" "}
+    <Destacado>
+      te cuide, te apoye y esté ahí cuando las cosas no funcionan como esperabas
+    </Destacado>
+    .
+  </>,
+  <>
+    Cinco años después de nuestro reencuentro llegó una actualización
+    importante. París.
   </>,
 ];
 
@@ -62,28 +90,39 @@ const PARRAFOS: ReactNode[] = [
 // momento de la propuesta.
 const PARRAFOS_PARIS: ReactNode[] = [
   <>
-    Cinco años después de nuestro reencuentro, en París, llegó otra de esas
-    decisiones que cambian una vida. Frente a la Torre Eiffel, con un anillo que
-    ella no esperaba y una pregunta que yo llevaba tiempo preparando, llegó el{" "}
-    <Destacado>“Sí”</Destacado> que quería escuchar.
+    Frente a la Torre Eiffel, con un anillo que Liliana no esperaba y una
+    pregunta que Julián llevaba tiempo preparando, hizo su mejor intento de
+    poner en producción el proyecto más importante de sus vidas. Y Julián
+    obtuvo el <Destacado>“Sí”</Destacado> que estaba esperando, entre emoción,
+    luces y un ambiente incomparable.
   </>,
   <>
-    Hoy, después de 20 años, podemos mirar atrás y entender que cada vuelta,
-    cada encuentro y cada decisión nos trajo hasta aquí. Porque no solo nos
-    enamoramos.{" "}
+    Hoy, después de 20 años, podemos mirar atrás y entender que aquella conexión
+    que comenzó en una sala de chat sobrevivió a distancias, pausas, cambios de
+    versión, algunos bugs y muchas actualizaciones.
+  </>,
+  <>
+    Porque no solo nos enamoramos…{" "}
     <Destacado>
       Crecimos juntos. Construimos juntos. Nos cuidamos. Nos elegimos.
     </Destacado>
   </>,
   <>
-    Y ahora, con la bendición de Dios y de nuestros padres, queremos dar el paso
-    más importante de nuestra historia:{" "}
-    <Destacado>seguir eligiéndonos para toda la vida</Destacado>.
+    Y ahora, con la bendición de Dios y de nuestros padres, estamos listos para
+    hacer el deploy definitivo:{" "}
+    <Destacado>una vida juntos. Para siempre.</Destacado>
   </>,
   <>
-    Después de todo, aquella historia que comenzó en una sala de chat de rock
-    resultó ser nuestra mejor conexión.
+    Después de todo, aquella conversación que comenzó con un simple mensaje
+    terminó convirtiéndose en nuestra mejor conexión.
   </>,
+];
+
+const ESTADO_CONEXION = [
+  "STATUS:  CONNECTED ❤️",
+  "UPTIME:  20 YEARS",
+  "VERSION: JULILIANA 1.0",
+  "STATUS:  IN PRODUCTION",
 ];
 
 export function Historia() {
@@ -142,6 +181,9 @@ export function Historia() {
             />
           </motion.div>
         </div>
+        <p className="max-w-md text-ink-soft italic">
+          Una conexión que sobrevivió a todas las actualizaciones.
+        </p>
         <Divider />
 
         <div className="flex flex-col gap-4">
@@ -180,7 +222,25 @@ export function Historia() {
         </div>
 
         <p className="font-script text-3xl leading-snug text-gold sm:text-4xl">
-          Y esta vez, prometemos no cerrar sesión.
+          Y esta vez prometemos no cerrar sesión.
+        </p>
+
+        {/* Remate del guiño tecnológico que recorre todo el relato. */}
+        <div className="w-full max-w-xs rounded-lg border border-gold/30 bg-ink px-5 py-4 text-left font-mono text-xs leading-relaxed text-ivory-soft/90 sm:max-w-sm sm:text-sm">
+          {ESTADO_CONEXION.map((linea) => (
+            <p key={linea} className="whitespace-pre">
+              {linea}
+            </p>
+          ))}
+        </div>
+
+        <p className="max-w-md text-ink-soft">
+          La píldora roja nos trajo hasta aquí, ahora solo queda disfrutar del
+          viaje. 🕶️❤️
+        </p>
+        <p className="max-w-md text-ink-soft">
+          Y si después de leer nuestra historia todavía están aquí… bienvenidos
+          a la Matrix. 🕶️😂
         </p>
       </Reveal>
     </section>
