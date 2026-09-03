@@ -9,6 +9,7 @@ import {
   type InvitadoInfo,
 } from "@/components/invitado/tarjeta-invitado";
 import { PetalosCayendo } from "@/components/ui/petalos-cayendo";
+import { CORTINA_TOTAL_S, CortinaFloral } from "./cortina-floral";
 import { Sobre } from "./sobre";
 
 const NOVIA = "Liliana";
@@ -60,7 +61,9 @@ export function Portada({ invitado }: { invitado: InvitadoInfo }) {
   return (
     <section
       ref={sectionRef}
-      className="relative flex h-dvh flex-col items-center justify-center overflow-y-auto px-6 py-16 text-center"
+      className={`relative flex h-dvh flex-col items-center justify-center px-6 py-16 text-center ${
+        revealed ? "" : "overflow-y-auto"
+      }`}
     >
       <motion.div
         aria-hidden
@@ -133,6 +136,32 @@ export function Portada({ invitado }: { invitado: InvitadoInfo }) {
               />
             </motion.div>
           </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="relative aspect-[2/3] w-52 overflow-hidden rounded-2xl border border-gold/30 shadow-[0_10px_30px_-12px_rgba(46,40,35,0.4)] sm:w-64"
+          >
+            {/* La foto se acerca lentamente mientras la cortina se disuelve,
+                para que el paso de las flores a la imagen se sienta continuo. */}
+            <motion.div
+              className="absolute inset-0"
+              initial={{ scale: 1.12 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: CORTINA_TOTAL_S, ease: "easeOut" }}
+            >
+              <Image
+                src="/images/liliana-julian-foto.jpg"
+                alt="Liliana y Julián"
+                fill
+                sizes="(min-width: 640px) 256px, 208px"
+                className="object-cover"
+                priority
+              />
+            </motion.div>
+
+            <CortinaFloral />
+          </motion.div>
           <p className="max-w-md text-lg text-ink-soft">
             Con inmensa alegría y la bendición de Dios, los invitamos a
             celebrar el inicio de nuestra nueva vida juntos.
