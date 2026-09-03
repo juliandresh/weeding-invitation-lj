@@ -17,10 +17,10 @@ function generarPetalos(cantidad: number): Petalo[] {
   return Array.from({ length: cantidad }, (_, id) => ({
     id,
     leftPct: -5 + Math.random() * 110,
-    size: 8 + Math.random() * 6,
-    duracion: 3.4 + Math.random() * 2.2,
-    delay: Math.random() * 2.4,
-    driftPx: 8 + Math.random() * 14,
+    size: 9 + Math.random() * 7,
+    duracion: 3.6 + Math.random() * 2.4,
+    delay: Math.random() * 2.6,
+    driftPx: 10 + Math.random() * 18,
   }));
 }
 
@@ -37,43 +37,65 @@ function FormaPetalo({ size }: { size: number }) {
 }
 
 type Flor = {
-  top: string;
-  left: string;
-  width: string;
+  top: number;
+  left: number;
+  escala: number;
   rotate: number;
-  delay: number;
+  flip: boolean;
 };
 
-// Las flores se posicionan en porcentajes del marco de la foto (no de la
-// sección), de modo que la tapan por completo sin importar el tamaño de
-// pantalla. Se desbordan a propósito de los bordes para que la cortina no
-// se vea recortada en un rectángulo perfecto.
+// Ramos que tapan la pantalla completa. Se distribuyen en bandas para
+// garantizar cobertura, pero con posiciones desalineadas y variación de
+// tamaño, giro y reflejo en cada uno: colocados en rejilla regular la
+// repetición de la misma imagen se lee como papel tapiz. El ancho base va en
+// unidades de viewport para mantener la densidad tanto en celular (pantalla
+// alta y angosta) como en escritorio (ancha).
 const FLORES: Flor[] = [
-  { top: "-10%", left: "-18%", width: "78%", rotate: -12, delay: 0 },
-  { top: "-6%", left: "38%", width: "80%", rotate: 9, delay: 0.09 },
-  { top: "6%", left: "10%", width: "82%", rotate: -4, delay: 0.05 },
-  { top: "20%", left: "-20%", width: "82%", rotate: 6, delay: 0.18 },
-  { top: "24%", left: "40%", width: "84%", rotate: -7, delay: 0.13 },
-  { top: "36%", left: "8%", width: "86%", rotate: 3, delay: 0.21 },
-  { top: "50%", left: "-16%", width: "80%", rotate: 11, delay: 0.24 },
-  { top: "52%", left: "36%", width: "82%", rotate: -10, delay: 0.29 },
-  { top: "64%", left: "12%", width: "82%", rotate: -2, delay: 0.32 },
-  { top: "74%", left: "-8%", width: "76%", rotate: 5, delay: 0.35 },
-  { top: "72%", left: "34%", width: "78%", rotate: -4, delay: 0.4 },
+  { top: -14, left: -18, escala: 1.15, rotate: -9, flip: false },
+  { top: -8, left: 14, escala: 0.85, rotate: 7, flip: true },
+  { top: -12, left: 44, escala: 1.05, rotate: -4, flip: false },
+  { top: -6, left: 76, escala: 0.95, rotate: 11, flip: true },
+
+  { top: 10, left: -8, escala: 0.9, rotate: 5, flip: true },
+  { top: 16, left: 24, escala: 1.2, rotate: -8, flip: false },
+  { top: 12, left: 56, escala: 0.8, rotate: 10, flip: true },
+  { top: 18, left: 86, escala: 1.1, rotate: -6, flip: false },
+
+  { top: 30, left: -16, escala: 1.0, rotate: 8, flip: false },
+  { top: 36, left: 12, escala: 0.75, rotate: -5, flip: true },
+  { top: 32, left: 44, escala: 1.25, rotate: 4, flip: false },
+  { top: 38, left: 78, escala: 0.9, rotate: -10, flip: true },
+
+  { top: 50, left: -6, escala: 1.1, rotate: -7, flip: true },
+  { top: 56, left: 26, escala: 0.85, rotate: 9, flip: false },
+  { top: 50, left: 58, escala: 1.0, rotate: -3, flip: true },
+  { top: 58, left: 88, escala: 1.15, rotate: 6, flip: false },
+
+  { top: 68, left: -14, escala: 0.95, rotate: 10, flip: false },
+  { top: 72, left: 16, escala: 1.2, rotate: -6, flip: true },
+  { top: 66, left: 48, escala: 0.8, rotate: 5, flip: false },
+  { top: 74, left: 80, escala: 1.05, rotate: -9, flip: true },
+
+  { top: 84, left: -6, escala: 1.1, rotate: 4, flip: true },
+  { top: 90, left: 24, escala: 0.9, rotate: -8, flip: false },
+  { top: 86, left: 56, escala: 1.15, rotate: 7, flip: true },
+  { top: 92, left: 86, escala: 0.85, rotate: -5, flip: false },
 ];
 
 type Mariposa = {
   top: string;
   left: string;
-  width: string;
+  size: string;
   delay: number;
 };
 
 const MARIPOSAS: Mariposa[] = [
-  { top: "8%", left: "12%", width: "38%", delay: 0.2 },
-  { top: "34%", left: "48%", width: "34%", delay: 0.42 },
-  { top: "62%", left: "8%", width: "36%", delay: 0.55 },
-  { top: "84%", left: "44%", width: "32%", delay: 0.32 },
+  { top: "12%", left: "14%", size: "w-16 sm:w-24", delay: 0.1 },
+  { top: "26%", left: "62%", size: "w-14 sm:w-20", delay: 0.35 },
+  { top: "44%", left: "8%", size: "w-12 sm:w-16", delay: 0.5 },
+  { top: "52%", left: "74%", size: "w-16 sm:w-24", delay: 0.2 },
+  { top: "70%", left: "26%", size: "w-14 sm:w-20", delay: 0.45 },
+  { top: "84%", left: "58%", size: "w-12 sm:w-16", delay: 0.3 },
 ];
 
 const DURACION_VISIBLE_MS = 3200;
@@ -82,11 +104,13 @@ export const CORTINA_TOTAL_S =
   DURACION_VISIBLE_MS / 1000 + DURACION_DESVANECIDO_S;
 
 // Cortina de flores, mariposas y pétalos (azul celeste/blanco) que cubre por
-// completo la foto de los novios al abrirse el sobre, y se desvanece
-// lentamente para revelarla. Se monta DENTRO del marco de la foto, así que
-// las flores tapan exactamente la imagen en vez de decorar los bordes de la
-// sección. Se desmonta del todo al terminar, para no dejar animaciones
-// corriendo de fondo.
+// completo la primera pantalla al abrirse el sobre, y se disuelve lentamente
+// para revelar el título, la foto de los novios y el mensaje de bienvenida.
+//
+// Los ramos se renderizan estáticos (sin animación propia de entrada): la
+// cortina ya debe estar formada en el instante en que aparece, y así lo único
+// que se anima es la opacidad del contenedor, manteniendo el efecto liviano
+// pese a la cantidad de imágenes. Se desmonta al terminar.
 export function CortinaFloral() {
   const [visible, setVisible] = useState(true);
   const petalos = useMemo(() => generarPetalos(14), []);
@@ -104,7 +128,7 @@ export function CortinaFloral() {
   return (
     <motion.div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-20 overflow-hidden"
+      className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{
@@ -113,17 +137,20 @@ export function CortinaFloral() {
         ease: "easeInOut",
       }}
     >
-      {/* capa base opaca: garantiza que la foto quede oculta al inicio */}
+      {/* capa base opaca: garantiza que nada del contenido se transparente */}
       <div className="absolute inset-0 bg-gradient-to-b from-sky-soft via-ivory to-sky-soft" />
 
       {FLORES.map((f, i) => (
-        <motion.div
+        <div
           key={`flor-${i}`}
-          className="absolute"
-          style={{ top: f.top, left: f.left, width: f.width }}
-          initial={{ opacity: 0, scale: 0.72, rotate: f.rotate - 6 }}
-          animate={{ opacity: 1, scale: 1, rotate: f.rotate }}
-          transition={{ duration: 0.9, delay: f.delay, ease: "easeOut" }}
+          className="absolute w-[46vw] sm:w-[30vw]"
+          style={{
+            top: `${f.top}%`,
+            left: `${f.left}%`,
+            transform: `rotate(${f.rotate}deg) scale(${f.escala})${
+              f.flip ? " scaleX(-1)" : ""
+            }`,
+          }}
         >
           <Image
             src="/images/flores-celeste-duotono.png"
@@ -131,37 +158,22 @@ export function CortinaFloral() {
             width={500}
             height={500}
             className="h-auto w-full"
+            priority
           />
-        </motion.div>
+        </div>
       ))}
 
       {MARIPOSAS.map((m, i) => (
         <motion.div
           key={`mariposa-${i}`}
-          className="absolute"
-          style={{ top: m.top, left: m.left, width: m.width }}
-          initial={{ opacity: 0, scale: 0.6 }}
-          animate={{
-            opacity: 1,
-            scale: 1,
-            y: [0, -7, 0],
-            rotate: [0, 4, -4, 0],
-          }}
+          className={`absolute ${m.size}`}
+          style={{ top: m.top, left: m.left }}
+          animate={{ y: [0, -9, 0], rotate: [0, 4, -4, 0] }}
           transition={{
-            opacity: { duration: 0.6, delay: m.delay },
-            scale: { duration: 0.6, delay: m.delay, ease: "easeOut" },
-            y: {
-              duration: 2.2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: m.delay + 0.3,
-            },
-            rotate: {
-              duration: 2.2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: m.delay + 0.3,
-            },
+            duration: 2.4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: m.delay,
           }}
         >
           <Image
@@ -179,9 +191,9 @@ export function CortinaFloral() {
           key={`petalo-${p.id}`}
           className="absolute top-0"
           style={{ left: `${p.leftPct}%` }}
-          initial={{ y: "-15%", opacity: 0, rotate: 0 }}
+          initial={{ y: "-15vh", opacity: 0, rotate: 0 }}
           animate={{
-            y: "115%",
+            y: "115vh",
             x: [0, p.driftPx, -p.driftPx, 0],
             opacity: [0, 1, 1, 0.9],
             rotate: 200,

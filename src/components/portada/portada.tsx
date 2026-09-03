@@ -39,11 +39,25 @@ export function Portada({ invitado }: { invitado: InvitadoInfo }) {
     window.setTimeout(() => setRevealed(true), REVEAL_DELAY_MS);
   }
 
-  // Bloquea el scroll de la página mientras el sobre no se haya abierto:
-  // la pantalla inicial debe verse sola, sin poder desplazarse a las
-  // siguientes secciones hasta hacer clic.
+  // La cortina floral tapa la pantalla completa apenas se abre el sobre; se
+  // marca cuándo termina de disolverse para no liberar el scroll antes.
+  const [cortinaTerminada, setCortinaTerminada] = useState(false);
   useEffect(() => {
-    if (revealed) {
+    if (!revealed) return;
+    const id = window.setTimeout(
+      () => setCortinaTerminada(true),
+      CORTINA_TOTAL_S * 1000
+    );
+    return () => window.clearTimeout(id);
+  }, [revealed]);
+
+  // Bloquea el scroll de la página mientras el sobre no se haya abierto y
+  // mientras la cortina se disuelve: la pantalla inicial debe verse sola,
+  // sin poder desplazarse a las siguientes secciones hasta que el reveal
+  // haya terminado.
+  const scrollLibre = revealed && cortinaTerminada;
+  useEffect(() => {
+    if (scrollLibre) {
       document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
       return;
@@ -56,7 +70,7 @@ export function Portada({ invitado }: { invitado: InvitadoInfo }) {
       document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
     };
-  }, [revealed]);
+  }, [scrollLibre]);
 
   return (
     <section
@@ -159,8 +173,6 @@ export function Portada({ invitado }: { invitado: InvitadoInfo }) {
                 priority
               />
             </motion.div>
-
-            <CortinaFloral />
           </motion.div>
           <p className="max-w-md text-lg text-ink-soft">
             Con inmensa alegría y la bendición de Dios, los invitamos a
@@ -168,6 +180,8 @@ export function Portada({ invitado }: { invitado: InvitadoInfo }) {
           </p>
         </motion.div>
       )}
+
+      {revealed && !cortinaTerminada && <CortinaFloral />}
     </section>
   );
 }
