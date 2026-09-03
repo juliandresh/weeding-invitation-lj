@@ -107,7 +107,7 @@ indispensable, ya que los invitados son familiares/amigos y el subdominio
 > Libardo (padre de Liliana), quien falleció hace varios años y por eso no
 > aparece en el listado de invitados — se decidió conscientemente incluirlo
 > por nombre, con el apodo cariñoso que le daba a Liliana ("Chiquis"), en vez
-> de omitirlo. Texto acordado y finalizado con los novios el 2026-08-19.
+> de omitirlo. Texto reescrito y finalizado con los novios el 2026-09-02.
 
 > **Nota:** hubo una sección "Sugerencias" (hoteles y sitios turísticos cerca de
 > la Hacienda La Victoria) que se quitó el 2026-08-19 por decisión de los novios

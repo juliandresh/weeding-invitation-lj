@@ -6,9 +6,13 @@ import { BurbujasSubiendo } from "@/components/ui/burbujas-subiendo";
 import { Divider } from "@/components/ui/divider";
 import { Reveal } from "@/components/ui/reveal";
 
-// Texto final acordado con los novios el 2026-08-19. 
-const MENSAJE =
-  "Antes de comenzar esta nueva etapa, queremos detenernos a agradecer a quienes nos dieron la vida y nos enseñaron a amar. A nuestros padres — María Otilia, Rosa Inés y Arnulfo — gracias por cada sacrificio silencioso, por las palabras justas en el momento preciso, y por creer en nosotros incluso cuando dudábamos. Y a Libardo, el padre de Liliana, que nos acompaña hoy desde otro lugar: aquella “Chiquis” a la que tanto amaste por fin se casa, y lleva tu amor en cada paso que da. Todo lo que somos hoy y todo el amor que hoy compartimos, nace de lo que ustedes sembraron primero. Este día es también suyo.";
+// Texto final acordado con los novios el 2026-09-02.
+const PARRAFOS = [
+  "Antes de comenzar esta nueva etapa, queremos detenernos un momento para agradecer a quienes nos dieron la vida, nos enseñaron a amar y sembraron en nosotros los valores que hoy nos permiten estar aquí.",
+  "A nuestros padres —María Otilia, Rosa Inés y Arnulfo—, gracias por cada sacrificio, cada consejo, cada abrazo y por creer en nosotros aun cuando nosotros mismos dudábamos.",
+  "Y a Libardo, el papá de Liliana, quien desde el cielo sigue acompañándola y celebrando con ella este día tan esperado. Sabemos que, aunque no pueda estar físicamente, su amor permanece en cada recuerdo, en cada enseñanza y en el corazón de su “Chiquis”, a quien seguramente hoy mira con orgullo y alegría.",
+  "Todo lo que somos y todo el amor que hoy compartimos nace de lo que ustedes sembraron primero. Por eso, este día también les pertenece.",
+];
 
 export function Agradecimiento() {
   return (
@@ -64,7 +68,13 @@ export function Agradecimiento() {
           </motion.div>
         </div>
         <Divider />
-        <p className="text-lg leading-relaxed text-ink-soft">{MENSAJE}</p>
+        <div className="flex flex-col gap-4">
+          {PARRAFOS.map((texto) => (
+            <p key={texto} className="text-lg leading-relaxed text-ink-soft">
+              {texto}
+            </p>
+          ))}
+        </div>
       </Reveal>
     </section>
   );
