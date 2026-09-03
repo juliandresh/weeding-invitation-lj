@@ -37,6 +37,29 @@ body {
   font-family: var(--font-serif), serif;
 }
 
+/* Balanceo suave de las flores y mariposas de la cortina de la Portada.
+   Va en CSS y no en Framer Motion a propósito: son varias decenas de
+   elementos animándose a la vez, y una animación CSS de transform corre en
+   el compositor sin costo de JavaScript por fotograma. Cada elemento define
+   su propia duración y retraso por style, para que el conjunto no se mueva
+   al unísono. */
+@keyframes cortina-flotar {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1.5deg);
+  }
+}
+
+.cortina-flota {
+  animation-name: cortina-flotar;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
 /* Grano de papel muy sutil sobre todo el sitio: un SVG de ruido (pocos KB,
    sin request externo) fijo en pantalla, con opacidad mínima para dar
    textura sin afectar la legibilidad ni el rendimiento. */

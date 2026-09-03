@@ -153,6 +153,28 @@ export function Footer() {
                   Iftikhar Alam en Vecteezy
                 </a>
               </span>
+              <span>
+                Flor azul de{" "}
+                <a
+                  href="https://www.vecteezy.com/-/60574170-stunning-light-blue-flower-bloom-close-up-macro-photography"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 hover:text-ivory-soft/60"
+                >
+                  Rashed Stock en Vecteezy
+                </a>
+              </span>
+              <span>
+                Flor blanca de{" "}
+                <a
+                  href="https://www.vecteezy.com/-/46854866-white-flower-on-transparent-background"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 hover:text-ivory-soft/60"
+                >
+                  Muhammad Bilal en Vecteezy
+                </a>
+              </span>
             </p>
           </motion.div>
         )}
