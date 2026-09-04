@@ -11,7 +11,7 @@ import { Reveal } from "@/components/ui/reveal";
 // reorientados por EXIF, redimensionados y sin metadatos. Para agregar o
 // quitar fotos hay que reprocesarlas con el mismo esquema de nombres y
 // ajustar TOTAL_FOTOS.
-const TOTAL_FOTOS = 45;
+const TOTAL_FOTOS = 46;
 const FOTOS = Array.from({ length: TOTAL_FOTOS }, (_, i) => ({
   src: `/images/galeria/galeria-${i + 1}.jpg`,
   alt: `Foto ${i + 1} de Liliana y Julián`,
