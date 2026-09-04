@@ -73,9 +73,15 @@ export function Portada({ invitado }: { invitado: InvitadoInfo }) {
   }, [scrollLibre]);
 
   return (
+    // El contenido se centra con `m-auto` en el bloque interno y no con
+    // `justify-center` en la sección: cuando un mensaje personalizado largo
+    // hace que el contenido no quepa, `justify-center` deja la parte de
+    // arriba (monograma y nombres) fuera de vista y el scroll no permite
+    // alcanzarla. Con márgenes automáticos, el centrado se mantiene mientras
+    // sobra espacio y se puede desplazar hasta arriba cuando no.
     <section
       ref={sectionRef}
-      className={`relative flex h-dvh flex-col items-center justify-center px-6 py-16 text-center ${
+      className={`relative flex h-dvh flex-col items-center px-6 py-16 text-center ${
         revealed ? "" : "overflow-y-auto"
       }`}
     >
@@ -88,7 +94,7 @@ export function Portada({ invitado }: { invitado: InvitadoInfo }) {
       <PetalosCayendo />
 
       {!revealed && (
-        <div className="relative z-10 flex flex-col items-center gap-6">
+        <div className="relative z-10 m-auto flex flex-col items-center gap-6">
           <TarjetaInvitado invitado={invitado} />
           <p className="max-w-md text-lg text-ink-soft">
             {invitado.mensajePersonalizado ?? MENSAJE_GENERICO} Toca el sobre
@@ -103,7 +109,7 @@ export function Portada({ invitado }: { invitado: InvitadoInfo }) {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="relative z-10 flex flex-col items-center gap-6"
+          className="relative z-10 m-auto flex flex-col items-center gap-6"
         >
           <p className="font-serif text-xs uppercase tracking-[0.35em] text-gold">
             Nos casamos
