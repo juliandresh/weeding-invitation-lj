@@ -6,10 +6,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Divider } from "@/components/ui/divider";
 import { Reveal } from "@/components/ui/reveal";
 
-// Fotos temporales (dummy) mientras llega la sesión profesional — ver
-// CLAUDE.md §10. Reemplazar los archivos en public/images/galeria/ cuando
-// estén listas las definitivas (mismo esquema de nombres o ajustar TOTAL_FOTOS).
-const TOTAL_FOTOS = 9;
+// Fotos definitivas elegidas por los novios (2026-09-03). Los originales
+// viven en assets-originales/galeria/ y se procesan a public/images/galeria/
+// reorientados por EXIF, redimensionados y sin metadatos. Para agregar o
+// quitar fotos hay que reprocesarlas con el mismo esquema de nombres y
+// ajustar TOTAL_FOTOS.
+const TOTAL_FOTOS = 45;
 const FOTOS = Array.from({ length: TOTAL_FOTOS }, (_, i) => ({
   src: `/images/galeria/galeria-${i + 1}.jpg`,
   alt: `Foto ${i + 1} de Liliana y Julián`,

@@ -60,6 +60,14 @@ indispensable, ya que los invitados son familiares/amigos y el subdominio
   proyecto, en formato MP3 optimizado en peso.
 
 ### 3.3 Álbum digital con código QR (servicio de terceros)
+
+> **Estado (2026-09-03):** la sección "Comparte tus fotos" se quitó del sitio
+> por decisión de los novios — todavía no se define proveedor. Se eliminaron
+> el componente (`src/components/compartir-fotos/`) y la constante `ALBUM_QR`
+> de `site-config.ts`; la dependencia `qrcode.react` se dejó instalada para no
+> tener que reinstalarla si la sección vuelve. Lo descrito abajo sigue siendo
+> el plan si se retoma.
+
 - Se contratará un **servicio externo de álbum digital** (proveedor aún por
   definir) que permite a los invitados **subir sus propias fotos el día de la
   boda** escaneando un código QR.
@@ -88,19 +96,16 @@ indispensable, ya que los invitados son familiares/amigos y el subdominio
 7. **Galería** — fotos de la sesión profesional
 8. **Frase/cita** (opcional, textual propia)
 9. **Dress code** — sugerencias de vestimenta
-10. **Comparte tus fotos** — **código QR de acceso al álbum digital** (servicio de
-    terceros contratado aparte) para que los invitados suban sus fotos del día del
-    evento
-11. **Notas** — avisos importantes para los invitados (ej. celebración solo para
+10. **Notas** — avisos importantes para los invitados (ej. celebración solo para
     adultos, recomendación de elegir conductor designado con anticipación)
-12. **Regalos** — mensaje sobre lluvia de sobres, sin datos bancarios expuestos
-13. **Confirmación de asistencia (RSVP)** — formulario conectado a Supabase, con
+11. **Regalos** — mensaje sobre lluvia de sobres, sin datos bancarios expuestos
+12. **Confirmación de asistencia (RSVP)** — formulario conectado a Supabase, con
     captcha; fecha límite de confirmación editable desde `configuracion_sitio`.
     El envío debe hacerse sin abandonar el sitio (panel/modal en la misma
     página, sin redirigir a un formulario externo). Incluir un aviso sutil de
     que la invitación es personal/intransferible y solo incluye a las
     personas detalladas en ella (sin acompañantes adicionales no listados)
-14. **Footer** — créditos discretos
+13. **Footer** — créditos discretos
 
 > **Nota sobre "Agradecimiento a los padres":** el texto (`src/components/agradecimiento/agradecimiento.tsx`)
 > nombra a los cuatro padres: María Otilia, Rosa Inés y Arnulfo, y también a
@@ -277,10 +282,12 @@ Autenticación obligatoria vía Supabase Auth. Funciones:
 
 - [ ] Definir paleta de colores exacta
 - [ ] Confirmar fecha, lugar de ceremonia y recepción
-- [ ] Recibir y seleccionar fotos finales del fotógrafo
+- [x] Recibir y seleccionar fotos finales del fotógrafo (45 fotos cargadas en la
+      galería el 2026-09-03; originales en `assets-originales/galeria/`)
 - [ ] Elegir canción de fondo definitiva (y confirmar disponibilidad del archivo)
 - [ ] Cargar lista inicial de invitados (nombre, título, mesa, cupos)
 - [ ] Definir proveedor del álbum digital y obtener el código QR / link definitivo
+      (en pausa: la sección se quitó del sitio el 2026-09-03, ver §3.3)
 - [ ] Crear cuenta en Vercel y en Supabase (gratuitas)
 
 ---
