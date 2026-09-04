@@ -195,6 +195,11 @@ tabla: configuracion_sitio
   de lectura/escritura a las cuatro tablas.
 - Links de invitado con formato `tuboda.vercel.app/inv/{token_unico}` — nunca
   `?mesa=8` o IDs adivinables/secuenciales.
+- La raíz `/` muestra una página neutra (monograma, fecha y aviso de que la
+  invitación es personal): quien entre sin enlace no debe ver una invitación
+  con invitados de ejemplo. La vista previa completa vive en `/demo`. Ambas
+  llevan `noindex` — no tiene sentido que aparezcan en buscadores
+  (decisión del 2026-09-03).
 
 ---
 
