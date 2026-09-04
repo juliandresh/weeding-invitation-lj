@@ -1,6 +1,5 @@
 import { Agradecimiento } from "@/components/agradecimiento/agradecimiento";
 import { CeremoniaRecepcion } from "@/components/ceremonia/ceremonia-recepcion";
-import { CompartirFotos } from "@/components/compartir-fotos/compartir-fotos";
 import { Countdown } from "@/components/countdown/countdown";
 import { DressCode } from "@/components/dress-code/dress-code";
 import { Footer } from "@/components/footer/footer";
@@ -47,8 +46,6 @@ export function PaginaInvitacion({
         <Frase />
         <SectionBranches />
         <DressCode />
-        <SectionBranches />
-        <CompartirFotos />
         <SectionBranches />
         <Notas />
         <SectionBranches />
