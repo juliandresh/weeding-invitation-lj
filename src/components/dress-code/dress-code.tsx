@@ -14,10 +14,7 @@ const COLORES_DAMAS = [
   { nombre: "Azul petróleo", hex: "#1B4F5C" },
 ];
 
-const COLORES_CABALLEROS = [
-  { nombre: "Blanco", hex: "#FFFFFF" },
-  { nombre: "Negro", hex: "#111111" },
-];
+const COLORES_CABALLEROS = [{ nombre: "Blanco", hex: "#FFFFFF" }];
 
 function IconoVestido() {
   return (
@@ -124,7 +121,7 @@ export function DressCode() {
               Formal, con corbata o corbatín.
             </p>
             <p className="text-sm text-ink-soft">
-              Colores reservados para el novio, evitar:
+              Color reservado para el novio, evitar:
             </p>
             <Paleta colores={COLORES_CABALLEROS} />
           </div>
