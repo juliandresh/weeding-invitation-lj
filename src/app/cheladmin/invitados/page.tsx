@@ -10,7 +10,7 @@ export default async function InvitadosPage() {
   const { data } = await supabase
     .from("invitaciones")
     .select(
-      "id, token_unico, mesa, cupos, confirmado, cupos_confirmados, personas(nombre, apellido, rol)"
+      "id, token_unico, telefono, mensaje_personalizado, mesa, cupos, confirmado, cupos_confirmados, personas(nombre, apellido, rol)"
     )
     .order("creado_en", { ascending: true });
 
