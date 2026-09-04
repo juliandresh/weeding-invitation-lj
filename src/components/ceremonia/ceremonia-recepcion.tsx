@@ -27,7 +27,7 @@ const listaVariants: Variants = {
   visible: { transition: { staggerChildren: 0.15 } },
 };
 
-const cardVariants: Variants = {
+const itemVariants: Variants = {
   oculto: { opacity: 0, y: 16 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
@@ -110,18 +110,23 @@ export function CeremoniaRecepcion() {
         <p className="text-ink-soft">{DIRECCION}</p>
         <Divider />
 
+        {/* Ceremonia y recepción van en una sola tarjeta con un único botón:
+            ambas ocurren en la misma hacienda y los dos mapas apuntaban al
+            mismo sitio, así que separarlas ocupaba el doble sin aportar nada. */}
         <motion.div
           variants={listaVariants}
           initial="oculto"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-4 grid w-full gap-6 sm:grid-cols-2"
+          className="mt-4 flex w-full max-w-md flex-col items-center gap-6 rounded-lg border border-gold/30 bg-ivory px-6 py-8"
         >
-          {LUGARES.map((lugar) => (
+          {LUGARES.map((lugar, i) => (
             <motion.div
               key={lugar.etiqueta}
-              variants={cardVariants}
-              className="flex flex-col items-center gap-2 rounded-lg border border-gold/30 bg-ivory px-6 py-8"
+              variants={itemVariants}
+              className={`flex w-full flex-col items-center gap-1.5 ${
+                i > 0 ? "border-t border-gold/20 pt-6" : ""
+              }`}
             >
               <p className="font-serif text-xs uppercase tracking-[0.25em] text-gold">
                 {lugar.etiqueta}
@@ -130,17 +135,19 @@ export function CeremoniaRecepcion() {
               {lugar.nota && (
                 <p className="text-sm text-ink-soft italic">{lugar.nota}</p>
               )}
-              <a
-                href={MAPS_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-2 rounded-full border border-gold px-5 py-2 text-xs uppercase tracking-[0.15em] text-gold transition hover:bg-gold hover:text-ivory"
-              >
-                <IconoPin />
-                Cómo llegar
-              </a>
             </motion.div>
           ))}
+
+          <motion.a
+            variants={itemVariants}
+            href={MAPS_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 inline-flex items-center gap-2 rounded-full border border-gold px-5 py-2 text-xs uppercase tracking-[0.15em] text-gold transition hover:bg-gold hover:text-ivory"
+          >
+            <IconoPin />
+            Cómo llegar
+          </motion.a>
         </motion.div>
       </Reveal>
     </section>
