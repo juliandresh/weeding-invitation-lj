@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { PersonaInvitado } from "@/components/invitado/tarjeta-invitado";
 import { Confetti } from "@/components/ui/confetti";
 import { Divider } from "@/components/ui/divider";
+import { AnillosToque, IndicadorToque } from "@/components/ui/indicador-toque";
 import { PetalosCayendo } from "@/components/ui/petalos-cayendo";
 import { Reveal } from "@/components/ui/reveal";
 import { RSVP_FECHA_LIMITE, RSVP_NOTA_EXCLUSIVIDAD } from "@/lib/site-config";
@@ -164,11 +165,14 @@ export function Rsvp({
         )}
 
         {!abierto && !fechaLimitePasada && (
-          <div className="relative mt-2">
+          // Botón sólido y con texto grande cuando aún no han respondido: el
+          // contorno con mayúsculas pequeñas no se leía como algo presionable
+          // y varios invitados no sabían que había que tocarlo (2026-09-04).
+          <div className="relative mt-2 flex flex-col items-center">
             {!yaRespondio && (
               <motion.div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[radial-gradient(circle,var(--color-gold-soft)_0%,transparent_70%)] blur-xl"
+                className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-16 rounded-full bg-[radial-gradient(circle,var(--color-gold-soft)_0%,transparent_70%)] blur-xl"
                 animate={{ opacity: [0.35, 0.65, 0.35], scale: [0.9, 1.2, 0.9] }}
                 transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
               />
@@ -176,12 +180,26 @@ export function Rsvp({
             <motion.button
               type="button"
               onClick={() => setAbierto(true)}
-              className="relative inline-flex items-center gap-2 rounded-full border border-gold px-6 py-2.5 text-xs uppercase tracking-[0.15em] text-gold transition hover:bg-gold hover:text-ivory"
+              className={
+                yaRespondio
+                  ? "relative inline-flex items-center gap-2 rounded-full border border-gold px-6 py-2.5 text-xs uppercase tracking-[0.15em] text-gold transition hover:bg-gold hover:text-ivory"
+                  : "relative inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-base tracking-wide text-ivory shadow-[0_6px_18px_-6px_rgba(46,40,35,0.5)] transition hover:opacity-90 sm:text-lg"
+              }
               animate={yaRespondio ? {} : { scale: [1, 1.05, 1] }}
               transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
             >
+              {!yaRespondio && <AnillosToque />}
               {yaRespondio ? "Editar mi respuesta" : "Confirmar asistencia"}
             </motion.button>
+
+            {!yaRespondio && (
+              <div className="mt-2 flex flex-col items-center text-gold">
+                <IndicadorToque />
+                <p className="mt-1 text-sm text-ink-soft">
+                  Toca el botón para confirmar
+                </p>
+              </div>
+            )}
           </div>
         )}
 
