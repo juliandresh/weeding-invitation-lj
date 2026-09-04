@@ -8,10 +8,14 @@ import { Reveal } from "@/components/ui/reveal";
 
 // Fotos definitivas elegidas por los novios (2026-09-03). Los originales
 // viven en assets-originales/galeria/ y se procesan a public/images/galeria/
-// reorientados por EXIF, redimensionados y sin metadatos. Para agregar o
+// reorientados por EXIF, redimensionados y sin metadatos (las fotos de
+// celular suelen traer coordenadas GPS incrustadas).
+//
+// Orden: primero la sesión profesional (1-23, en la secuencia del
+// fotógrafo) y luego las personales en orden cronológico. Para agregar o
 // quitar fotos hay que reprocesarlas con el mismo esquema de nombres y
 // ajustar TOTAL_FOTOS.
-const TOTAL_FOTOS = 46;
+const TOTAL_FOTOS = 47;
 const FOTOS = Array.from({ length: TOTAL_FOTOS }, (_, i) => ({
   src: `/images/galeria/galeria-${i + 1}.jpg`,
   alt: `Foto ${i + 1} de Liliana y Julián`,
