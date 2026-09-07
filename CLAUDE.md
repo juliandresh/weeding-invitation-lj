@@ -234,6 +234,23 @@ Autenticación obligatoria vía Supabase Auth. Funciones:
 | Dependencias | Mantener actualizadas (`npm audit` periódico) |
 | Respaldo | Exportación manual de la base de datos desde Supabase antes del evento |
 
+### 7.1 Mantener viva la base de datos (crítico hasta el 2026-12-26)
+
+El plan gratuito de Supabase **suspende los proyectos que pasan varios días
+sin recibir peticiones**, y con el proyecto pausado *todas* las invitaciones
+dejarían de cargar. Para evitarlo hay un cron diario de Vercel
+(`vercel.json`) que llama a `/api/keepalive`, una ruta que hace la consulta
+más barata posible contra Supabase (cuenta filas sin traerlas).
+
+- Requiere que las variables de Supabase estén configuradas en Vercel (ya lo
+  están, son las mismas que usa el sitio).
+- Conviene definir `CRON_SECRET` en Vercel: si existe, la ruta exige ese
+  token y deja de ser invocable por cualquiera.
+- El plan Hobby de Vercel permite ejecutar el cron una vez al día, de sobra
+  frente al umbral de inactividad de Supabase.
+- Verificar de vez en cuando en Vercel → Cron Jobs que las ejecuciones estén
+  saliendo bien, sobre todo antes de enviar las invitaciones.
+
 ---
 
 ## 8. Flujo de trabajo de desarrollo y pruebas
@@ -285,15 +302,24 @@ Autenticación obligatoria vía Supabase Auth. Funciones:
 
 ## 10. Pendientes antes de iniciar desarrollo con Claude Code
 
-- [ ] Definir paleta de colores exacta
-- [ ] Confirmar fecha, lugar de ceremonia y recepción
-- [x] Recibir y seleccionar fotos finales del fotógrafo (45 fotos cargadas en la
+- [x] Definir paleta de colores exacta (marfil / azul claro / dorado, en uso)
+- [x] Confirmar fecha y lugar (26/12/2026, Hacienda La Victoria, Subachoque)
+- [x] Recibir y seleccionar fotos finales del fotógrafo (47 fotos cargadas en la
       galería el 2026-09-03; originales en `assets-originales/galeria/`)
-- [ ] Elegir canción de fondo definitiva (y confirmar disponibilidad del archivo)
-- [ ] Cargar lista inicial de invitados (nombre, título, mesa, cupos)
+- [x] Elegir canción de fondo definitiva — `public/audio/miranda-perfecta.mp3`,
+      confirmada como definitiva el 2026-09-03, no cambiar
+- [x] Cargar lista inicial de invitados (64 invitaciones / 126 personas)
 - [ ] Definir proveedor del álbum digital y obtener el código QR / link definitivo
       (en pausa: la sección se quitó del sitio el 2026-09-03, ver §3.3)
-- [ ] Crear cuenta en Vercel y en Supabase (gratuitas)
+- [x] Crear cuenta en Vercel y en Supabase (gratuitas)
+
+Datos de invitados que se completan sobre la marcha (no bloquean el envío):
+
+- **Teléfonos:** se van agregando con los días. El panel (`/cheladmin/invitados`)
+  tiene un filtro "Sin teléfono" para ver cuáles faltan.
+- **Mesas:** se asignan más adelante, para la logística del día.
+- **Mensajes personalizados:** solo para algunas invitaciones, no para todas —
+  las que no tengan usan el texto genérico de bienvenida.
 
 ---
 
