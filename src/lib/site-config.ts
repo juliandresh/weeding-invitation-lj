@@ -5,8 +5,12 @@
  * estos valores se reemplazan por una consulta a esa tabla.
  */
 
-// Hora de la ceremonia según el itinerario preliminar — no 100% confirmada.
-export const FECHA_BODA = new Date("2026-12-26T15:45:00");
+// Momento al que apunta la cuenta regresiva. Se fija a las 4:00 p. m. a
+// propósito, aunque el itinerario anuncie la ceremonia a las 3:45 p. m.:
+// decisión de los novios (2026-09-07), para dar un margen de holgura.
+// Las demás pantallas que usan esta constante solo muestran la fecha
+// (día/mes/año), así que la hora únicamente afecta al conteo.
+export const FECHA_BODA = new Date("2026-12-26T16:00:00");
 
 // Fecha límite para confirmar asistencia (RSVP) — lunes 2 de noviembre de
 // 2026. Usar para mostrar el aviso en la sección de confirmación y, más
