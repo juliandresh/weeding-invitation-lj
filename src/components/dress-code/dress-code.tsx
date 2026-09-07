@@ -5,8 +5,10 @@ import { Divider } from "@/components/ui/divider";
 import { PetalosCayendo } from "@/components/ui/petalos-cayendo";
 import { Reveal } from "@/components/ui/reveal";
 
-// Iconos placeholder (SVG, silueta simple) — más adelante se pueden
-// reemplazar por imágenes de referencia generadas con IA.
+// Siluetas SVG propias, dibujadas a mano con animación de trazo. Se
+// consideró reemplazarlas por ilustraciones más elaboradas, pero los novios
+// prefieren estas por su sobriedad (decisión del 2026-09-03): no son un
+// provisional pendiente de cambiar.
 
 const COLORES_DAMAS = [
   { nombre: "Blanco", hex: "#FFFFFF" },
