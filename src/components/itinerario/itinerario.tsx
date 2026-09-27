@@ -5,16 +5,15 @@ import { CorazonesCayendo } from "@/components/ui/corazones-cayendo";
 import { Divider } from "@/components/ui/divider";
 import { Reveal } from "@/components/ui/reveal";
 
-// Horario preliminar — no 100% confirmado, sirve como base para construir
-// la sección hasta tener el itinerario definitivo.
+// Horario entregado por los novios el 2026-09-27.
 const ITINERARIO = [
   { hora: "3:00 PM", evento: "Llegada de invitados" },
   { hora: "3:45 PM", evento: "Ceremonia" },
-  { hora: "5:00 PM", evento: "Cóctel de bienvenida" },
-  { hora: "6:30 PM", evento: "Entrada de invitados al salón" },
-  { hora: "7:00 PM", evento: "Cena" },
-  { hora: "8:00 PM", evento: "Brindis" },
-  { hora: "9:00 PM", evento: "Fiesta" },
+  { hora: "5:10 PM", evento: "Cóctel de bienvenida" },
+  { hora: "6:30 PM", evento: "Palabras de brindis" },
+  { hora: "7:00 PM", evento: "Entrada de invitados al salón" },
+  { hora: "7:20 PM", evento: "Cena" },
+  { hora: "8:50 PM", evento: "Fiesta" },
 ];
 
 const listaVariants: Variants = {
