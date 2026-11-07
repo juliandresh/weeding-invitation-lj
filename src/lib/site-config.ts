@@ -12,10 +12,11 @@
 // (día/mes/año), así que la hora únicamente afecta al conteo.
 export const FECHA_BODA = new Date("2026-12-26T16:00:00");
 
-// Fecha límite para confirmar asistencia (RSVP) — lunes 2 de noviembre de
-// 2026. Usar para mostrar el aviso en la sección de confirmación y, más
-// adelante, para bloquear el formulario después de esta fecha.
-export const RSVP_FECHA_LIMITE = new Date("2026-11-02T23:59:59");
+// Fecha límite para confirmar asistencia (RSVP) — domingo 15 de noviembre
+// de 2026 (se amplió desde el 2 de noviembre el 2026-11-07). Oculta el
+// formulario pasada esta fecha. Debe coincidir con `rsvp_fecha_limite` en
+// la tabla `configuracion_sitio`, que es la que bloquea el envío en la base.
+export const RSVP_FECHA_LIMITE = new Date("2026-11-15T23:59:59-05:00");
 
 // Aviso sutil de exclusividad — la invitación solo incluye a las personas
 // detalladas en ella (según cupos del invitado), sin acompañantes
